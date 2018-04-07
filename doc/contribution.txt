@@ -13,9 +13,9 @@ Milestone 2(Teamwork)
 4) Started learning about intermediate code generation techniques.
 
 Milestone 3 - Draft Plan 
-Parsing and Lexical analysis - Debarti, Vivek      
-Intermediate code generation - Janani , Debarti , Shilpa
-Runtime environment - Vivek , Shilpa , Janani
-YouTube Video  - Team Work
-Final report  - Team Work
+1) Parsing and Lexical analysis - Debarti, Vivek      
+2) Intermediate code generation - Janani , Debarti , Shilpa
+3) Runtime environment - Vivek , Shilpa , Janani
+4) YouTube Video  - Team Work
+5) Final report  - Team Work
 
