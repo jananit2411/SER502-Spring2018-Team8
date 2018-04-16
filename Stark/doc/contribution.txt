@@ -1,0 +1,20 @@
+Tasks for contribution
+
+Milestone 1(Teamwork)
+1) Understanding the requirements
+2) Created the repository in GitHub
+3) Decided on the tools to be used- Antlr and Java
+
+Milestone 2(Teamwork)
+1) Decided the name of the programming language.
+2) Rules for the grammar.
+2) Created the initial design document.
+3) Checked integration of Antlr plugin in IntelliJ and tested the grammar rules.
+4) Started learning about intermediate code generation techniques.
+
+Milestone 3 - Draft Plan 
+1) Parsing and Lexical analysis - Debarati, Vivek      
+2) Intermediate code generation - Janani , Debarati , Shilpa
+3) Runtime environment - Vivek , Shilpa , Janani
+4) YouTube Video  - Team Work
+5) Final report  - Team Work
