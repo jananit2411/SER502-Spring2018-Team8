@@ -1,5 +1,4 @@
-package compiler.antlrGenerated;
-
+package compiler.antlrGenerated;// Generated from D:/Stark\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +9,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class starkLexer extends Lexer {
+public class StarkLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -84,20 +83,20 @@ public class starkLexer extends Lexer {
 	}
 
 
-	public starkLexer(CharStream input) {
+	public StarkLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "stark.g4"; }
+	public String getGrammarFileName() { return "Stark.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
 
 	@Override
 	public String getSerializedATN() { return _serializedATN; }
-	
+
 	@Override
 	public String[] getChannelNames() { return channelNames; }
 

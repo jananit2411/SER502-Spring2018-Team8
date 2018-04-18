@@ -1,267 +1,351 @@
-package compiler.antlrGenerated;
+package compiler.antlrGenerated;// Generated from D:/Stark\Stark.g4 by ANTLR 4.7
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link starkListener},
+ * This class provides an empty implementation of {@link StarkListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class starkBaseListener implements starkListener {
+public class StarkBaseListener implements StarkListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(starkParser.ProgramContext ctx) { }
+	@Override public void enterProgram(StarkParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProgram(starkParser.ProgramContext ctx) { }
+	@Override public void exitProgram(StarkParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementList(starkParser.StatementListContext ctx) { }
+	@Override public void enterStatementList(StarkParser.StatementListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementList(starkParser.StatementListContext ctx) { }
+	@Override public void exitStatementList(StarkParser.StatementListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(starkParser.StatementContext ctx) { }
+	@Override public void enterStatement(StarkParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(starkParser.StatementContext ctx) { }
+	@Override public void exitStatement(StarkParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInitializationStmt(starkParser.InitializationStmtContext ctx) { }
+	@Override public void enterInitializationStmt(StarkParser.InitializationStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInitializationStmt(starkParser.InitializationStmtContext ctx) { }
+	@Override public void exitInitializationStmt(StarkParser.InitializationStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclarationStmt(starkParser.DeclarationStmtContext ctx) { }
+	@Override public void enterVariableDeclaration(StarkParser.VariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclarationStmt(starkParser.DeclarationStmtContext ctx) { }
+	@Override public void exitVariableDeclaration(StarkParser.VariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignmentStmt(starkParser.AssignmentStmtContext ctx) { }
+	@Override public void enterBoolVariable(StarkParser.BoolVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignmentStmt(starkParser.AssignmentStmtContext ctx) { }
+	@Override public void exitBoolVariable(StarkParser.BoolVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfStatement(starkParser.IfStatementContext ctx) { }
+	@Override public void enterAssignmentStmt(StarkParser.AssignmentStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfStatement(starkParser.IfStatementContext ctx) { }
+	@Override public void exitAssignmentStmt(StarkParser.AssignmentStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhileStatement(starkParser.WhileStatementContext ctx) { }
+	@Override public void enterIfStatement(StarkParser.IfStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhileStatement(starkParser.WhileStatementContext ctx) { }
+	@Override public void exitIfStatement(StarkParser.IfStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDisplayStatement(starkParser.DisplayStatementContext ctx) { }
+	@Override public void enterWhileStatement(StarkParser.WhileStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDisplayStatement(starkParser.DisplayStatementContext ctx) { }
+	@Override public void exitWhileStatement(StarkParser.WhileStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelationalExpression(starkParser.RelationalExpressionContext ctx) { }
+	@Override public void enterDispExpr(StarkParser.DispExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelationalExpression(starkParser.RelationalExpressionContext ctx) { }
+	@Override public void exitDispExpr(StarkParser.DispExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLogicalExpression(starkParser.LogicalExpressionContext ctx) { }
+	@Override public void enterDispFunc(StarkParser.DispFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogicalExpression(starkParser.LogicalExpressionContext ctx) { }
+	@Override public void exitDispFunc(StarkParser.DispFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolExpression(starkParser.BoolExpressionContext ctx) { }
+	@Override public void enterRelationalExpression(StarkParser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolExpression(starkParser.BoolExpressionContext ctx) { }
+	@Override public void exitRelationalExpression(StarkParser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpression(starkParser.ExpressionContext ctx) { }
+	@Override public void enterLogicalExpression(StarkParser.LogicalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpression(starkParser.ExpressionContext ctx) { }
+	@Override public void exitLogicalExpression(StarkParser.LogicalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTerm(starkParser.TermContext ctx) { }
+	@Override public void enterBoolExpression(StarkParser.BoolExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTerm(starkParser.TermContext ctx) { }
+	@Override public void exitBoolExpression(StarkParser.BoolExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactor(starkParser.FactorContext ctx) { }
+	@Override public void enterAddExpression(StarkParser.AddExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFactor(starkParser.FactorContext ctx) { }
+	@Override public void exitAddExpression(StarkParser.AddExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionDefn(starkParser.FunctionDefnContext ctx) { }
+	@Override public void enterSubExpression(StarkParser.SubExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionDefn(starkParser.FunctionDefnContext ctx) { }
+	@Override public void exitSubExpression(StarkParser.SubExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionName(starkParser.FunctionNameContext ctx) { }
+	@Override public void enterJustTerm(StarkParser.JustTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionName(starkParser.FunctionNameContext ctx) { }
+	@Override public void exitJustTerm(StarkParser.JustTermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParameters(starkParser.ParametersContext ctx) { }
+	@Override public void enterMulExpresison(StarkParser.MulExpresisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParameters(starkParser.ParametersContext ctx) { }
+	@Override public void exitMulExpresison(StarkParser.MulExpresisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturnStatement(starkParser.ReturnStatementContext ctx) { }
+	@Override public void enterDivExpression(StarkParser.DivExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturnStatement(starkParser.ReturnStatementContext ctx) { }
+	@Override public void exitDivExpression(StarkParser.DivExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunctionCall(starkParser.FunctionCallContext ctx) { }
+	@Override public void enterModExpression(StarkParser.ModExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunctionCall(starkParser.FunctionCallContext ctx) { }
+	@Override public void exitModExpression(StarkParser.ModExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArguments(starkParser.ArgumentsContext ctx) { }
+	@Override public void enterJustFactor(StarkParser.JustFactorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArguments(starkParser.ArgumentsContext ctx) { }
+	@Override public void exitJustFactor(StarkParser.JustFactorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFactor(StarkParser.FactorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFactor(StarkParser.FactorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionDefn(StarkParser.FunctionDefnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionDefn(StarkParser.FunctionDefnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionName(StarkParser.FunctionNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionName(StarkParser.FunctionNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParameters(StarkParser.ParametersContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParameters(StarkParser.ParametersContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterReturnStatement(StarkParser.ReturnStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReturnStatement(StarkParser.ReturnStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunctionCall(StarkParser.FunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionCall(StarkParser.FunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArguments(StarkParser.ArgumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArguments(StarkParser.ArgumentsContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,5 +1,4 @@
-package compiler.antlrGenerated;
-
+package compiler.antlrGenerated;// Generated from D:/Stark\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +9,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class starkParser extends Parser {
+public class StarkParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -84,7 +83,7 @@ public class starkParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "stark.g4"; }
+	public String getGrammarFileName() { return "Stark.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -95,7 +94,7 @@ public class starkParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public starkParser(TokenStream input) {
+	public StarkParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -112,15 +111,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterProgram(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterProgram(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitProgram(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitProgram(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitProgram(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -161,15 +160,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statementList; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterStatementList(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterStatementList(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitStatementList(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitStatementList(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitStatementList(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitStatementList(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -238,15 +237,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -331,7 +330,7 @@ public class starkParser extends Parser {
 	}
 
 	public static class InitializationStmtContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -347,15 +346,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_initializationStmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterInitializationStmt(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterInitializationStmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitInitializationStmt(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitInitializationStmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitInitializationStmt(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitInitializationStmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -433,22 +432,48 @@ public class starkParser extends Parser {
 	}
 
 	public static class DeclarationStmtContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
 		public DeclarationStmtContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_declarationStmt; }
+	 
+		public DeclarationStmtContext() { }
+		public void copyFrom(DeclarationStmtContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class BoolVariableContext extends DeclarationStmtContext {
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
+		public BoolVariableContext(DeclarationStmtContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterDeclarationStmt(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterBoolVariable(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitDeclarationStmt(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitBoolVariable(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitDeclarationStmt(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitBoolVariable(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class VariableDeclarationContext extends DeclarationStmtContext {
+		public Token declarevarName;
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
+		public VariableDeclarationContext(DeclarationStmtContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterVariableDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitVariableDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitVariableDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -461,15 +486,17 @@ public class starkParser extends Parser {
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
+				_localctx = new VariableDeclarationContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(88);
 				match(T__1);
 				setState(89);
-				match(IDENTIFIER);
+				((VariableDeclarationContext)_localctx).declarevarName = match(IDENTIFIER);
 				}
 				break;
 			case T__3:
+				_localctx = new BoolVariableContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(90);
@@ -494,7 +521,9 @@ public class starkParser extends Parser {
 	}
 
 	public static class AssignmentStmtContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
+		public Token varName;
+		public ExpressionContext expr;
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
 		public BoolExpressionContext boolExpression() {
 			return getRuleContext(BoolExpressionContext.class,0);
 		}
@@ -507,15 +536,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_assignmentStmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterAssignmentStmt(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterAssignmentStmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitAssignmentStmt(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitAssignmentStmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitAssignmentStmt(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitAssignmentStmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -542,11 +571,11 @@ public class starkParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(97);
-				match(IDENTIFIER);
+				((AssignmentStmtContext)_localctx).varName = match(IDENTIFIER);
 				setState(98);
 				match(T__2);
 				setState(99);
-				expression();
+				((AssignmentStmtContext)_localctx).expr = expression();
 				}
 				break;
 			}
@@ -578,15 +607,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_ifStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterIfStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterIfStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitIfStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitIfStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitIfStatement(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitIfStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -670,15 +699,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_whileStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterWhileStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterWhileStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitWhileStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitWhileStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitWhileStatement(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitWhileStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -717,27 +746,52 @@ public class starkParser extends Parser {
 	}
 
 	public static class DisplayStatementContext extends ParserRuleContext {
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public FunctionCallContext functionCall() {
-			return getRuleContext(FunctionCallContext.class,0);
-		}
 		public DisplayStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_displayStatement; }
+	 
+		public DisplayStatementContext() { }
+		public void copyFrom(DisplayStatementContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class DispExprContext extends DisplayStatementContext {
+		public ExpressionContext argument;
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public DispExprContext(DisplayStatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterDisplayStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterDispExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitDisplayStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitDispExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitDisplayStatement(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitDispExpr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class DispFuncContext extends DisplayStatementContext {
+		public FunctionCallContext functionCall() {
+			return getRuleContext(FunctionCallContext.class,0);
+		}
+		public DispFuncContext(DisplayStatementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterDispFunc(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitDispFunc(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitDispFunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -750,15 +804,17 @@ public class starkParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
+				_localctx = new DispExprContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(132);
 				match(T__11);
 				setState(133);
-				expression();
+				((DispExprContext)_localctx).argument = expression();
 				}
 				break;
 			case 2:
+				_localctx = new DispFuncContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(134);
@@ -787,22 +843,22 @@ public class starkParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode BOOLVALUES() { return getToken(starkParser.BOOLVALUES, 0); }
+		public TerminalNode BOOLVALUES() { return getToken(StarkParser.BOOLVALUES, 0); }
 		public RelationalExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_relationalExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterRelationalExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterRelationalExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitRelationalExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitRelationalExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitRelationalExpression(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitRelationalExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -931,15 +987,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_logicalExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterLogicalExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterLogicalExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitLogicalExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitLogicalExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitLogicalExpression(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitLogicalExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1033,22 +1089,22 @@ public class starkParser extends Parser {
 		public LogicalExpressionContext logicalExpression() {
 			return getRuleContext(LogicalExpressionContext.class,0);
 		}
-		public TerminalNode BOOLVALUES() { return getToken(starkParser.BOOLVALUES, 0); }
+		public TerminalNode BOOLVALUES() { return getToken(StarkParser.BOOLVALUES, 0); }
 		public BoolExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_boolExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterBoolExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterBoolExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitBoolExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitBoolExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitBoolExpression(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitBoolExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1095,27 +1151,76 @@ public class starkParser extends Parser {
 	}
 
 	public static class ExpressionContext extends ParserRuleContext {
+		public ExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expression; }
+	 
+		public ExpressionContext() { }
+		public void copyFrom(ExpressionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class AddExpressionContext extends ExpressionContext {
 		public TermContext term() {
 			return getRuleContext(TermContext.class,0);
 		}
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public ExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expression; }
+		public AddExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterAddExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitExpression(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitAddExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitAddExpression(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class JustTermContext extends ExpressionContext {
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
+		}
+		public JustTermContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterJustTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitJustTerm(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitJustTerm(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class SubExpressionContext extends ExpressionContext {
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
+		}
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public SubExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterSubExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitSubExpression(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitSubExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1128,6 +1233,7 @@ public class starkParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
+				_localctx = new AddExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(199);
@@ -1139,6 +1245,7 @@ public class starkParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new SubExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(203);
@@ -1150,6 +1257,7 @@ public class starkParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new JustTermContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(207);
@@ -1170,27 +1278,98 @@ public class starkParser extends Parser {
 	}
 
 	public static class TermContext extends ParserRuleContext {
+		public TermContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_term; }
+	 
+		public TermContext() { }
+		public void copyFrom(TermContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ModExpressionContext extends TermContext {
 		public FactorContext factor() {
 			return getRuleContext(FactorContext.class,0);
 		}
 		public TermContext term() {
 			return getRuleContext(TermContext.class,0);
 		}
-		public TermContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_term; }
+		public ModExpressionContext(TermContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterTerm(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterModExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitTerm(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitModExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitTerm(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitModExpression(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class JustFactorContext extends TermContext {
+		public FactorContext factor() {
+			return getRuleContext(FactorContext.class,0);
+		}
+		public JustFactorContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterJustFactor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitJustFactor(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitJustFactor(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class DivExpressionContext extends TermContext {
+		public FactorContext factor() {
+			return getRuleContext(FactorContext.class,0);
+		}
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
+		}
+		public DivExpressionContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterDivExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitDivExpression(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitDivExpression(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MulExpresisonContext extends TermContext {
+		public FactorContext factor() {
+			return getRuleContext(FactorContext.class,0);
+		}
+		public TermContext term() {
+			return getRuleContext(TermContext.class,0);
+		}
+		public MulExpresisonContext(TermContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterMulExpresison(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitMulExpresison(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitMulExpresison(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1203,6 +1382,7 @@ public class starkParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
+				_localctx = new MulExpresisonContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(210);
@@ -1214,6 +1394,7 @@ public class starkParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new DivExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(214);
@@ -1225,6 +1406,7 @@ public class starkParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new ModExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(218);
@@ -1236,6 +1418,7 @@ public class starkParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new JustFactorContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(222);
@@ -1256,26 +1439,28 @@ public class starkParser extends Parser {
 	}
 
 	public static class FactorContext extends ParserRuleContext {
+		public Token varName;
+		public Token num;
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
-		public TerminalNode NUMBER() { return getToken(starkParser.NUMBER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
+		public TerminalNode NUMBER() { return getToken(StarkParser.NUMBER, 0); }
 		public FactorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterFactor(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterFactor(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitFactor(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitFactor(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitFactor(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitFactor(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1302,14 +1487,14 @@ public class starkParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(229);
-				match(IDENTIFIER);
+				((FactorContext)_localctx).varName = match(IDENTIFIER);
 				}
 				break;
 			case NUMBER:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(230);
-				match(NUMBER);
+				((FactorContext)_localctx).num = match(NUMBER);
 				}
 				break;
 			default:
@@ -1346,15 +1531,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionDefn; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterFunctionDefn(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterFunctionDefn(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitFunctionDefn(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitFunctionDefn(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitFunctionDefn(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitFunctionDefn(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1429,22 +1614,22 @@ public class starkParser extends Parser {
 	}
 
 	public static class FunctionNameContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
 		public FunctionNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionName; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterFunctionName(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterFunctionName(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitFunctionName(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitFunctionName(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitFunctionName(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitFunctionName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1483,15 +1668,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_parameters; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterParameters(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterParameters(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitParameters(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitParameters(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitParameters(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitParameters(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1552,15 +1737,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_returnStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterReturnStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterReturnStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitReturnStatement(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitReturnStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitReturnStatement(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitReturnStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1613,7 +1798,7 @@ public class starkParser extends Parser {
 	}
 
 	public static class FunctionCallContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
 		public FunctionNameContext functionName() {
 			return getRuleContext(FunctionNameContext.class,0);
 		}
@@ -1626,15 +1811,15 @@ public class starkParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionCall; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterFunctionCall(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterFunctionCall(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitFunctionCall(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitFunctionCall(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitFunctionCall(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitFunctionCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1690,26 +1875,26 @@ public class starkParser extends Parser {
 	}
 
 	public static class ArgumentsContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(starkParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
 		public ArgumentsContext arguments() {
 			return getRuleContext(ArgumentsContext.class,0);
 		}
-		public TerminalNode NUMBER() { return getToken(starkParser.NUMBER, 0); }
+		public TerminalNode NUMBER() { return getToken(StarkParser.NUMBER, 0); }
 		public ArgumentsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arguments; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).enterArguments(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterArguments(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof starkListener ) ((starkListener)listener).exitArguments(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitArguments(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof starkVisitor ) return ((starkVisitor<? extends T>)visitor).visitArguments(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitArguments(this);
 			else return visitor.visitChildren(this);
 		}
 	}

@@ -1,138 +1,191 @@
-package compiler.antlrGenerated;
+package compiler.antlrGenerated;// Generated from D:/Stark\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
- * by {@link starkParser}.
+ * by {@link StarkParser}.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
-public interface starkVisitor<T> extends ParseTreeVisitor<T> {
+public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link starkParser#program}.
+	 * Visit a parse tree produced by {@link StarkParser#program}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(starkParser.ProgramContext ctx);
+	T visitProgram(StarkParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#statementList}.
+	 * Visit a parse tree produced by {@link StarkParser#statementList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatementList(starkParser.StatementListContext ctx);
+	T visitStatementList(StarkParser.StatementListContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#statement}.
+	 * Visit a parse tree produced by {@link StarkParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatement(starkParser.StatementContext ctx);
+	T visitStatement(StarkParser.StatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#initializationStmt}.
+	 * Visit a parse tree produced by {@link StarkParser#initializationStmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInitializationStmt(starkParser.InitializationStmtContext ctx);
+	T visitInitializationStmt(StarkParser.InitializationStmtContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#declarationStmt}.
+	 * Visit a parse tree produced by the {@code VariableDeclaration}
+	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclarationStmt(starkParser.DeclarationStmtContext ctx);
+	T visitVariableDeclaration(StarkParser.VariableDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#assignmentStmt}.
+	 * Visit a parse tree produced by the {@code boolVariable}
+	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAssignmentStmt(starkParser.AssignmentStmtContext ctx);
+	T visitBoolVariable(StarkParser.BoolVariableContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#ifStatement}.
+	 * Visit a parse tree produced by {@link StarkParser#assignmentStmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfStatement(starkParser.IfStatementContext ctx);
+	T visitAssignmentStmt(StarkParser.AssignmentStmtContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#whileStatement}.
+	 * Visit a parse tree produced by {@link StarkParser#ifStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWhileStatement(starkParser.WhileStatementContext ctx);
+	T visitIfStatement(StarkParser.IfStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#displayStatement}.
+	 * Visit a parse tree produced by {@link StarkParser#whileStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDisplayStatement(starkParser.DisplayStatementContext ctx);
+	T visitWhileStatement(StarkParser.WhileStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#relationalExpression}.
+	 * Visit a parse tree produced by the {@code dispExpr}
+	 * labeled alternative in {@link StarkParser#displayStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRelationalExpression(starkParser.RelationalExpressionContext ctx);
+	T visitDispExpr(StarkParser.DispExprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#logicalExpression}.
+	 * Visit a parse tree produced by the {@code dispFunc}
+	 * labeled alternative in {@link StarkParser#displayStatement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLogicalExpression(starkParser.LogicalExpressionContext ctx);
+	T visitDispFunc(StarkParser.DispFuncContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#boolExpression}.
+	 * Visit a parse tree produced by {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBoolExpression(starkParser.BoolExpressionContext ctx);
+	T visitRelationalExpression(StarkParser.RelationalExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#expression}.
+	 * Visit a parse tree produced by {@link StarkParser#logicalExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(starkParser.ExpressionContext ctx);
+	T visitLogicalExpression(StarkParser.LogicalExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#term}.
+	 * Visit a parse tree produced by {@link StarkParser#boolExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTerm(starkParser.TermContext ctx);
+	T visitBoolExpression(StarkParser.BoolExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#factor}.
+	 * Visit a parse tree produced by the {@code addExpression}
+	 * labeled alternative in {@link StarkParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFactor(starkParser.FactorContext ctx);
+	T visitAddExpression(StarkParser.AddExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#functionDefn}.
+	 * Visit a parse tree produced by the {@code subExpression}
+	 * labeled alternative in {@link StarkParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionDefn(starkParser.FunctionDefnContext ctx);
+	T visitSubExpression(StarkParser.SubExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#functionName}.
+	 * Visit a parse tree produced by the {@code justTerm}
+	 * labeled alternative in {@link StarkParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionName(starkParser.FunctionNameContext ctx);
+	T visitJustTerm(StarkParser.JustTermContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#parameters}.
+	 * Visit a parse tree produced by the {@code mulExpresison}
+	 * labeled alternative in {@link StarkParser#term}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParameters(starkParser.ParametersContext ctx);
+	T visitMulExpresison(StarkParser.MulExpresisonContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#returnStatement}.
+	 * Visit a parse tree produced by the {@code divExpression}
+	 * labeled alternative in {@link StarkParser#term}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitReturnStatement(starkParser.ReturnStatementContext ctx);
+	T visitDivExpression(StarkParser.DivExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#functionCall}.
+	 * Visit a parse tree produced by the {@code modExpression}
+	 * labeled alternative in {@link StarkParser#term}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFunctionCall(starkParser.FunctionCallContext ctx);
+	T visitModExpression(StarkParser.ModExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link starkParser#arguments}.
+	 * Visit a parse tree produced by the {@code justFactor}
+	 * labeled alternative in {@link StarkParser#term}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArguments(starkParser.ArgumentsContext ctx);
+	T visitJustFactor(StarkParser.JustFactorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#factor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFactor(StarkParser.FactorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#functionDefn}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionDefn(StarkParser.FunctionDefnContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#functionName}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionName(StarkParser.FunctionNameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParameters(StarkParser.ParametersContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReturnStatement(StarkParser.ReturnStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(StarkParser.FunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArguments(StarkParser.ArgumentsContext ctx);
 }
