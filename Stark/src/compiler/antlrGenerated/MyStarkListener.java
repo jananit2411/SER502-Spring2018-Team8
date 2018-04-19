@@ -63,37 +63,6 @@ public class MyStarkListener extends StarkBaseListener {
      * labeled alternative in {@link StarkParser#declarationStmt}.
      * @param ctx the parse tree
      */
-    public void enterVariableDeclaration(StarkParser.VariableDeclarationContext ctx){
-
-        System.out.println("enter Var declaration statement");
-       // System.out.println( " STORE "+ctx.IDENTIFIER().getText());
-    };
-    /**
-     * Exit a parse tree produced by the {@code VariableDeclaration}
-     * labeled alternative in {@link StarkParser#declarationStmt}.
-     * @param ctx the parse tree
-     */
-    public void exitVariableDeclaration(StarkParser.VariableDeclarationContext ctx){
-        System.out.println("exit var declaration statement");
-    };
-    /**
-     * Enter a parse tree produced by the {@code boolVariable}
-     * labeled alternative in {@link StarkParser#declarationStmt}.
-     * @param ctx the parse tree
-     */
-    public void enterBoolVariable(StarkParser.BoolVariableContext ctx){
-        //System.out.println("exit bool var statement");
-    };
-    /**
-     * Exit a parse tree produced by the {@code boolVariable}
-     * labeled alternative in {@link StarkParser#declarationStmt}.
-     * @param ctx the parse tree
-     */
-    public void exitBoolVariable(StarkParser.BoolVariableContext ctx){};
-    /**
-     * Enter a parse tree produced by {@link StarkParser#assignmentStmt}.
-     * @param ctx the parse tree
-     */
     public void enterAssignmentStmt(StarkParser.AssignmentStmtContext ctx){
        // System.out.println("enter assignment statement");
         //System.out.println("PUSH " );
@@ -156,6 +125,15 @@ public class MyStarkListener extends StarkBaseListener {
         System.out.println("Add");
     //    System.out.println("Exit add expression");
     }
+    @Override public void enterDivExpression(StarkParser.DivExpressionContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitDivExpression(StarkParser.DivExpressionContext ctx) {
+        System.out.println("Div");
+    }
 
     @Override public void enterSubExpression(StarkParser.SubExpressionContext ctx) { }
     /**
@@ -163,7 +141,19 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitSubExpression(StarkParser.SubExpressionContext ctx) { }
+    @Override public void exitSubExpression(StarkParser.SubExpressionContext ctx) {
+        System.out.println("Sub");
+    }
+
+    @Override public void enterModExpression(StarkParser.ModExpressionContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitModExpression(StarkParser.ModExpressionContext ctx) {
+        System.out.println("Mod");
+    }
 
     @Override public  void enterDispFunc(StarkParser.DispFuncContext ctx){};
     /**
@@ -235,6 +225,7 @@ public class MyStarkListener extends StarkBaseListener {
         System.out.println("MUL");
         System.out.println("Exit mul expression");
     }
+
     /**
      * Enter a parse tree produced by {@link StarkParser#term}.
      * @param ctx the parse tree
@@ -247,7 +238,6 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitTerm(StarkParser.TermContext ctx){
-
 
     };
     /**
