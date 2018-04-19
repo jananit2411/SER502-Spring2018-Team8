@@ -425,13 +425,16 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterEqualsExpression(StarkParser.EqualsExpressionContext ctx) { }
+    @Override public void enterEqualsExpression(StarkParser.EqualsExpressionContext ctx) {
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitEqualsExpression(StarkParser.EqualsExpressionContext ctx) { }
+    @Override public void exitEqualsExpression(StarkParser.EqualsExpressionContext ctx) {
+        System.out.println("IsEqual");
+    }
     /**
      * {@inheritDoc}
      *
@@ -443,19 +446,24 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitNotEqualsExpression(StarkParser.NotEqualsExpressionContext ctx) { }
+    @Override public void exitNotEqualsExpression(StarkParser.NotEqualsExpressionContext ctx) {
+        System.out.println("IsNotEqual");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterLessExpression(StarkParser.LessExpressionContext ctx) { }
+    @Override public void enterLessExpression(StarkParser.LessExpressionContext ctx) {
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLessExpression(StarkParser.LessExpressionContext ctx) { }
+    @Override public void exitLessExpression(StarkParser.LessExpressionContext ctx) {
+        System.out.println("IsLessThan");
+    }
     /**
      * {@inheritDoc}
      *
@@ -467,7 +475,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLessEqualsExpression(StarkParser.LessEqualsExpressionContext ctx) { }
+    @Override public void exitLessEqualsExpression(StarkParser.LessEqualsExpressionContext ctx) {
+        System.out.println("IsLessThanOrEqual");
+    }
     /**
      * {@inheritDoc}
      *
@@ -479,7 +489,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitGreaterExpression(StarkParser.GreaterExpressionContext ctx) { }
+    @Override public void exitGreaterExpression(StarkParser.GreaterExpressionContext ctx) {
+        System.out.println("IsGreaterThanEqual");
+    }
     /**
      * {@inheritDoc}
      *
@@ -491,19 +503,24 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitGreaterEqualsExpression(StarkParser.GreaterEqualsExpressionContext ctx) { }
+    @Override public void exitGreaterEqualsExpression(StarkParser.GreaterEqualsExpressionContext ctx) {
+        System.out.println("IsGreaterThanEqual");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterEqualsBooValue(StarkParser.EqualsBooValueContext ctx) { }
+    @Override public void enterEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx) { }
+    @Override public void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
+        System.out.println("IsEqualToBool");
+    }
     /**
      * {@inheritDoc}
      *
@@ -515,7 +532,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitNotEqualsValue(StarkParser.NotEqualsValueContext ctx) { }
+    @Override public void exitNotEqualsValue(StarkParser.NotEqualsValueContext ctx) {
+        System.out.println("IsNotEqualToBool");
+    }
     /**
      * {@inheritDoc}
      *
@@ -527,7 +546,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitRelationalAnd(StarkParser.RelationalAndContext ctx) { }
+    @Override public void exitRelationalAnd(StarkParser.RelationalAndContext ctx) {
+        System.out.println("And");
+    }
     /**
      * {@inheritDoc}
      *
@@ -539,7 +560,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitRelationalOr(StarkParser.RelationalOrContext ctx) { }
+    @Override public void exitRelationalOr(StarkParser.RelationalOrContext ctx) {
+        System.out.println("Or");
+    }
     /**
      * {@inheritDoc}
      *
@@ -551,7 +574,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLogicalAnd(StarkParser.LogicalAndContext ctx) { }
+    @Override public void exitLogicalAnd(StarkParser.LogicalAndContext ctx) {
+        System.out.println("And");
+    }
     /**
      * {@inheritDoc}
      *
@@ -563,19 +588,24 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLogicalOr(StarkParser.LogicalOrContext ctx) { }
+    @Override public void exitLogicalOr(StarkParser.LogicalOrContext ctx) {
+        System.out.println("Or");
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterRelationalNot(StarkParser.RelationalNotContext ctx) { }
+    @Override public void enterRelationalNot(StarkParser.RelationalNotContext ctx) {
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitRelationalNot(StarkParser.RelationalNotContext ctx) { }
+    @Override public void exitRelationalNot(StarkParser.RelationalNotContext ctx) {
+        System.out.println("Not");
+    }
     /**
      * {@inheritDoc}
      *
@@ -587,7 +617,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitLogicalNot(StarkParser.LogicalNotContext ctx) { }
+    @Override public void exitLogicalNot(StarkParser.LogicalNotContext ctx) {
+        System.out.println("Not");
+    }
     /**
      * {@inheritDoc}
      *
