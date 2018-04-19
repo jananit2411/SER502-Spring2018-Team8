@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from D:/Stark\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -37,39 +37,77 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitStatement(StarkParser.StatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#initializationStmt}.
+	 * Enter a parse tree produced by the {@code initIntExpression}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterInitializationStmt(StarkParser.InitializationStmtContext ctx);
+	void enterInitIntExpression(StarkParser.InitIntExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#initializationStmt}.
+	 * Exit a parse tree produced by the {@code initIntExpression}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitInitializationStmt(StarkParser.InitializationStmtContext ctx);
+	void exitInitIntExpression(StarkParser.InitIntExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code VariableDeclaration}
+	 * Enter a parse tree produced by the {@code initBoolExpression}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterInitBoolExpression(StarkParser.InitBoolExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code initBoolExpression}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitInitBoolExpression(StarkParser.InitBoolExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code initIntFunctionCall}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code initIntFunctionCall}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code initBoolFunctionCall}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code initBoolFunctionCall}
+	 * labeled alternative in {@link StarkParser#initializationStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code intDeclaration}
 	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableDeclaration(StarkParser.VariableDeclarationContext ctx);
+	void enterIntDeclaration(StarkParser.IntDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code VariableDeclaration}
+	 * Exit a parse tree produced by the {@code intDeclaration}
 	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableDeclaration(StarkParser.VariableDeclarationContext ctx);
+	void exitIntDeclaration(StarkParser.IntDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code boolVariable}
+	 * Enter a parse tree produced by the {@code boolDeclaration}
 	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterBoolVariable(StarkParser.BoolVariableContext ctx);
+	void enterBoolDeclaration(StarkParser.BoolDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code boolVariable}
+	 * Exit a parse tree produced by the {@code boolDeclaration}
 	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitBoolVariable(StarkParser.BoolVariableContext ctx);
+	void exitBoolDeclaration(StarkParser.BoolDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StarkParser#assignmentStmt}.
 	 * @param ctx the parse tree
@@ -81,15 +119,29 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitAssignmentStmt(StarkParser.AssignmentStmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#ifStatement}.
+	 * Enter a parse tree produced by the {@code ifStmt}
+	 * labeled alternative in {@link StarkParser#ifStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfStatement(StarkParser.IfStatementContext ctx);
+	void enterIfStmt(StarkParser.IfStmtContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#ifStatement}.
+	 * Exit a parse tree produced by the {@code ifStmt}
+	 * labeled alternative in {@link StarkParser#ifStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfStatement(StarkParser.IfStatementContext ctx);
+	void exitIfStmt(StarkParser.IfStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ifElseStmt}
+	 * labeled alternative in {@link StarkParser#ifStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfElseStmt(StarkParser.IfElseStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ifElseStmt}
+	 * labeled alternative in {@link StarkParser#ifStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfElseStmt(StarkParser.IfElseStmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StarkParser#whileStatement}.
 	 * @param ctx the parse tree
@@ -125,35 +177,209 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitDispFunc(StarkParser.DispFuncContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#relationalExpression}.
+	 * Enter a parse tree produced by the {@code equalsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelationalExpression(StarkParser.RelationalExpressionContext ctx);
+	void enterEqualsExpression(StarkParser.EqualsExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#relationalExpression}.
+	 * Exit a parse tree produced by the {@code equalsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelationalExpression(StarkParser.RelationalExpressionContext ctx);
+	void exitEqualsExpression(StarkParser.EqualsExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#logicalExpression}.
+	 * Enter a parse tree produced by the {@code notEqualsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterLogicalExpression(StarkParser.LogicalExpressionContext ctx);
+	void enterNotEqualsExpression(StarkParser.NotEqualsExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#logicalExpression}.
+	 * Exit a parse tree produced by the {@code notEqualsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitLogicalExpression(StarkParser.LogicalExpressionContext ctx);
+	void exitNotEqualsExpression(StarkParser.NotEqualsExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#boolExpression}.
+	 * Enter a parse tree produced by the {@code lessExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterBoolExpression(StarkParser.BoolExpressionContext ctx);
+	void enterLessExpression(StarkParser.LessExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#boolExpression}.
+	 * Exit a parse tree produced by the {@code lessExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitBoolExpression(StarkParser.BoolExpressionContext ctx);
+	void exitLessExpression(StarkParser.LessExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code lessEqualsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLessEqualsExpression(StarkParser.LessEqualsExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code lessEqualsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLessEqualsExpression(StarkParser.LessEqualsExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code greaterExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreaterExpression(StarkParser.GreaterExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code greaterExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreaterExpression(StarkParser.GreaterExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code greaterEqualsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreaterEqualsExpression(StarkParser.GreaterEqualsExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code greaterEqualsExpression}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreaterEqualsExpression(StarkParser.GreaterEqualsExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code equalsBooValue}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualsBooValue(StarkParser.EqualsBooValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code equalsBooValue}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code notEqualsValue}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNotEqualsValue(StarkParser.NotEqualsValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code notEqualsValue}
+	 * labeled alternative in {@link StarkParser#relationalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNotEqualsValue(StarkParser.NotEqualsValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code relationalAnd}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelationalAnd(StarkParser.RelationalAndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code relationalAnd}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelationalAnd(StarkParser.RelationalAndContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code relationalOr}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelationalOr(StarkParser.RelationalOrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code relationalOr}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelationalOr(StarkParser.RelationalOrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code logicalAnd}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogicalAnd(StarkParser.LogicalAndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code logicalAnd}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogicalAnd(StarkParser.LogicalAndContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code logicalOr}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogicalOr(StarkParser.LogicalOrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code logicalOr}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogicalOr(StarkParser.LogicalOrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code relationalNot}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelationalNot(StarkParser.RelationalNotContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code relationalNot}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelationalNot(StarkParser.RelationalNotContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code logicalNot}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogicalNot(StarkParser.LogicalNotContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code logicalNot}
+	 * labeled alternative in {@link StarkParser#logicalExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogicalNot(StarkParser.LogicalNotContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code relationalStmt}
+	 * labeled alternative in {@link StarkParser#boolExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelationalStmt(StarkParser.RelationalStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code relationalStmt}
+	 * labeled alternative in {@link StarkParser#boolExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelationalStmt(StarkParser.RelationalStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code logicalStmt}
+	 * labeled alternative in {@link StarkParser#boolExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogicalStmt(StarkParser.LogicalStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code logicalStmt}
+	 * labeled alternative in {@link StarkParser#boolExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogicalStmt(StarkParser.LogicalStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code boolValue}
+	 * labeled alternative in {@link StarkParser#boolExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolValue(StarkParser.BoolValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code boolValue}
+	 * labeled alternative in {@link StarkParser#boolExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolValue(StarkParser.BoolValueContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code addExpression}
 	 * labeled alternative in {@link StarkParser#expression}.
@@ -179,17 +405,17 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitSubExpression(StarkParser.SubExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code justTerm}
+	 * Enter a parse tree produced by the {@code trm}
 	 * labeled alternative in {@link StarkParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterJustTerm(StarkParser.JustTermContext ctx);
+	void enterTrm(StarkParser.TrmContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code justTerm}
+	 * Exit a parse tree produced by the {@code trm}
 	 * labeled alternative in {@link StarkParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitJustTerm(StarkParser.JustTermContext ctx);
+	void exitTrm(StarkParser.TrmContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code mulExpresison}
 	 * labeled alternative in {@link StarkParser#term}.
@@ -227,77 +453,185 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitModExpression(StarkParser.ModExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code justFactor}
+	 * Enter a parse tree produced by the {@code fact}
 	 * labeled alternative in {@link StarkParser#term}.
 	 * @param ctx the parse tree
 	 */
-	void enterJustFactor(StarkParser.JustFactorContext ctx);
+	void enterFact(StarkParser.FactContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code justFactor}
+	 * Exit a parse tree produced by the {@code fact}
 	 * labeled alternative in {@link StarkParser#term}.
 	 * @param ctx the parse tree
 	 */
-	void exitJustFactor(StarkParser.JustFactorContext ctx);
+	void exitFact(StarkParser.FactContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#factor}.
+	 * Enter a parse tree produced by the {@code braceExpression}
+	 * labeled alternative in {@link StarkParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void enterFactor(StarkParser.FactorContext ctx);
+	void enterBraceExpression(StarkParser.BraceExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#factor}.
+	 * Exit a parse tree produced by the {@code braceExpression}
+	 * labeled alternative in {@link StarkParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void exitFactor(StarkParser.FactorContext ctx);
+	void exitBraceExpression(StarkParser.BraceExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#functionDefn}.
+	 * Enter a parse tree produced by the {@code Identifier}
+	 * labeled alternative in {@link StarkParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionDefn(StarkParser.FunctionDefnContext ctx);
+	void enterIdentifier(StarkParser.IdentifierContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#functionDefn}.
+	 * Exit a parse tree produced by the {@code Identifier}
+	 * labeled alternative in {@link StarkParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionDefn(StarkParser.FunctionDefnContext ctx);
+	void exitIdentifier(StarkParser.IdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#functionName}.
+	 * Enter a parse tree produced by the {@code number}
+	 * labeled alternative in {@link StarkParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionName(StarkParser.FunctionNameContext ctx);
+	void enterNumber(StarkParser.NumberContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#functionName}.
+	 * Exit a parse tree produced by the {@code number}
+	 * labeled alternative in {@link StarkParser#factor}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionName(StarkParser.FunctionNameContext ctx);
+	void exitNumber(StarkParser.NumberContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#parameters}.
+	 * Enter a parse tree produced by the {@code funcWithStmts}
+	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
 	 */
-	void enterParameters(StarkParser.ParametersContext ctx);
+	void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#parameters}.
+	 * Exit a parse tree produced by the {@code funcWithStmts}
+	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
 	 */
-	void exitParameters(StarkParser.ParametersContext ctx);
+	void exitFuncWithStmts(StarkParser.FuncWithStmtsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#returnStatement}.
+	 * Enter a parse tree produced by the {@code funcWithoutStmts}
+	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
 	 */
-	void enterReturnStatement(StarkParser.ReturnStatementContext ctx);
+	void enterFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#returnStatement}.
+	 * Exit a parse tree produced by the {@code funcWithoutStmts}
+	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
 	 */
-	void exitReturnStatement(StarkParser.ReturnStatementContext ctx);
+	void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#functionCall}.
+	 * Enter a parse tree produced by the {@code noFunc}
+	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionCall(StarkParser.FunctionCallContext ctx);
+	void enterNoFunc(StarkParser.NoFuncContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#functionCall}.
+	 * Exit a parse tree produced by the {@code noFunc}
+	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionCall(StarkParser.FunctionCallContext ctx);
+	void exitNoFunc(StarkParser.NoFuncContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code funName}
+	 * labeled alternative in {@link StarkParser#functionName}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunName(StarkParser.FunNameContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code funName}
+	 * labeled alternative in {@link StarkParser#functionName}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunName(StarkParser.FunNameContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code multParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterMultParam(StarkParser.MultParamContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code multParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitMultParam(StarkParser.MultParamContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code singleParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingleParam(StarkParser.SingleParamContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code singleParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingleParam(StarkParser.SingleParamContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code returnInt}
+	 * labeled alternative in {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturnInt(StarkParser.ReturnIntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code returnInt}
+	 * labeled alternative in {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturnInt(StarkParser.ReturnIntContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code returnBool}
+	 * labeled alternative in {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturnBool(StarkParser.ReturnBoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code returnBool}
+	 * labeled alternative in {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturnBool(StarkParser.ReturnBoolContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code noReturn}
+	 * labeled alternative in {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterNoReturn(StarkParser.NoReturnContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code noReturn}
+	 * labeled alternative in {@link StarkParser#returnStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitNoReturn(StarkParser.NoReturnContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code assignFunctionCall}
+	 * labeled alternative in {@link StarkParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code assignFunctionCall}
+	 * labeled alternative in {@link StarkParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code noAssignFunctionCall}
+	 * labeled alternative in {@link StarkParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code noAssignFunctionCall}
+	 * labeled alternative in {@link StarkParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StarkParser#arguments}.
 	 * @param ctx the parse tree

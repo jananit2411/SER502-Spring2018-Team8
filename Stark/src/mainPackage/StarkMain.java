@@ -14,9 +14,9 @@ public class StarkMain {
 
 		org.antlr.v4.runtime.ANTLRInputStream input = null;
 		try {
-			input = new org.antlr.v4.runtime.ANTLRFileStream("D:\\starkinput.txt");
+			input = new org.antlr.v4.runtime.ANTLRFileStream("C:\\Users\\SUHAS\\Desktop\\input.txt");
 		} catch (IOException e) {
-			System.out.println("Error: Could not find or load souce file ");
+			System.out.println("Error: Could not find or load source file ");
 			return;
 		}
 
