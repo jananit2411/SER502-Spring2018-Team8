@@ -195,6 +195,18 @@ public class StarkBaseListener implements StarkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhileCondition(StarkParser.WhileConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDispExpr(StarkParser.DispExprContext ctx) { }
 	/**
 	 * {@inheritDoc}

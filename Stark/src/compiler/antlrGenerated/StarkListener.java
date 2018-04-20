@@ -173,6 +173,16 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitWhileStatement(StarkParser.WhileStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StarkParser#whileCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileCondition(StarkParser.WhileConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StarkParser#whileCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileCondition(StarkParser.WhileConditionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code dispExpr}
 	 * labeled alternative in {@link StarkParser#displayStatement}.
 	 * @param ctx the parse tree

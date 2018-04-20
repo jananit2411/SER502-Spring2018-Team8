@@ -62,12 +62,17 @@ public class MyStarkListener extends StarkBaseListener {
      * Enter a parse tree produced by {@link StarkParser#whileStatement}.
      * @param ctx the parse tree
      */
-    public void enterWhileStatement(StarkParser.WhileStatementContext ctx){};
+    public void enterWhileStatement(StarkParser.WhileStatementContext ctx){
+        System.out.println("EnterWhile");
+    };
     /**
      * Exit a parse tree produced by {@link StarkParser#whileStatement}.
      * @param ctx the parse tree
      */
-    public void exitWhileStatement(StarkParser.WhileStatementContext ctx){};
+    public void exitWhileStatement(StarkParser.WhileStatementContext ctx){
+        System.out.println("JumpToLabel EnterWhile");
+        System.out.println("ExitWhile");
+    };
     /**
      * Enter a parse tree produced by the {@code dispFunc}
      * labeled alternative in {@link StarkParser#displayStatement}.
@@ -863,5 +868,19 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitCloseBracke(StarkParser.CloseBrackeContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitWhileCondition(StarkParser.WhileConditionContext ctx) {
+        System.out.println("IfFalseCondition JumpToExitWhile");
+    }
     //till here
 }

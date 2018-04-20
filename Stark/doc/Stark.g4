@@ -27,7 +27,8 @@ condition : boolExpression ;
 elseStmt : 'else' '{' statementList '}';
 //while statement that check a condition defined by a boolean expression and computes a list of statements
 //nested while
-whileStatement : 'while' '(' condition ')' '{' statementList '}' ;  //while(a>5){a=a+1;}
+whileStatement : 'while' '(' whileCondition ')' '{' statementList '}' ;  //while(a>5){a=a+1;}
+whileCondition : boolExpression;
 //display statement to display the value of a expression(which could be identifier or a number) or a function call
 displayStatement : 'display' argument=expression #dispExpr
                    |'display' functionCall #dispFunc;     //display a

@@ -108,6 +108,12 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWhileStatement(StarkParser.WhileStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StarkParser#whileCondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileCondition(StarkParser.WhileConditionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code dispExpr}
 	 * labeled alternative in {@link StarkParser#displayStatement}.
 	 * @param ctx the parse tree
