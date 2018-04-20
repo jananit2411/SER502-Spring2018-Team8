@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -89,6 +89,18 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIfElseStmt(StarkParser.IfElseStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondition(StarkParser.ConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StarkParser#elseStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElseStmt(StarkParser.ElseStmtContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StarkParser#whileStatement}.
 	 * @param ctx the parse tree

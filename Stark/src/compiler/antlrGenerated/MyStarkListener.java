@@ -44,25 +44,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitStatement(StarkParser.StatementContext ctx){};
-    /**
-     * Enter a parse tree produced by {@link StarkParser#initializationStmt}.
-     * @param ctx the parse tree
-     */
-    public void enterInitializationStmt(StarkParser.InitializationStmtContext ctx){
-        System.out.println("enter Init statement");
-    };
-    /**
-     * Exit a parse tree produced by {@link StarkParser#initializationStmt}.
-     * @param ctx the parse tree
-     */
-    public void exitInitializationStmt(StarkParser.InitializationStmtContext ctx){
-        System.out.println("exit Init statement");
-    };
-    /**
-     * Enter a parse tree produced by the {@code VariableDeclaration}
-     * labeled alternative in {@link StarkParser#declarationStmt}.
-     * @param ctx the parse tree
-     */
+
     public void enterAssignmentStmt(StarkParser.AssignmentStmtContext ctx){
        // System.out.println("enter assignment statement");
         //System.out.println("PUSH " );
@@ -76,16 +58,6 @@ public class MyStarkListener extends StarkBaseListener {
       //  System.out.println("exit assignment statement");
       System.out.println("STORE " + ctx.varName.getText().toUpperCase());
     };
-    /**
-     * Enter a parse tree produced by {@link StarkParser#ifStatement}.
-     * @param ctx the parse tree
-     */
-    public void enterIfStatement(StarkParser.IfStatementContext ctx){};
-    /**
-     * Exit a parse tree produced by {@link StarkParser#ifStatement}.
-     * @param ctx the parse tree
-     */
-    public void exitIfStatement(StarkParser.IfStatementContext ctx){};
     /**
      * Enter a parse tree produced by {@link StarkParser#whileStatement}.
      * @param ctx the parse tree
@@ -378,7 +350,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitIfStmt(StarkParser.IfStmtContext ctx) { }
+    @Override public void exitIfStmt(StarkParser.IfStmtContext ctx) {
+        System.out.println("ExitIf");
+    }
     /**
      * {@inheritDoc}
      *
@@ -826,5 +800,19 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterCondition(StarkParser.ConditionContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitCondition(StarkParser.ConditionContext ctx) {
+        System.out.println("JumpIfFalse ExitIf");
+    }
     //till here
 }

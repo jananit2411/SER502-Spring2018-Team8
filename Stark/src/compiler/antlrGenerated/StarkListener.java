@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -142,6 +142,26 @@ public interface StarkListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfElseStmt(StarkParser.IfElseStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StarkParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition(StarkParser.ConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StarkParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition(StarkParser.ConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StarkParser#elseStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterElseStmt(StarkParser.ElseStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StarkParser#elseStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitElseStmt(StarkParser.ElseStmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StarkParser#whileStatement}.
 	 * @param ctx the parse tree
