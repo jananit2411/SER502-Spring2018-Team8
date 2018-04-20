@@ -22,7 +22,7 @@ assignmentStmt : varName = IDENTIFIER '=' boolExpression|           // x = true
                  varName = IDENTIFIER '=' expression ;              // x = y or x=y+z
 //if statement with or without else and nested if statements
 ifStatement : 'if' '(' condition ')' '{' statementList '}' #ifStmt|                               //if(a>b) {c=a;}
-              'if' '(' condition ')' '{' statementList '}' elseStmt #ifElseStmt ;  // else {c=b;}
+              'if' '(' condition ')' openBrace statementList closeBrace elseStmt #ifElseStmt ;  // else {c=b;}
 condition : boolExpression ;
 elseStmt : 'else' '{' statementList '}';
 //while statement that check a condition defined by a boolean expression and computes a list of statements
@@ -74,6 +74,8 @@ returnStatement : 'return' expression ';' #returnInt|
                   'return' boolExpression';' #returnBool | #noReturn ;
 functionCall : IDENTIFIER '=' functionName '(' arguments ')' #assignFunctionCall|functionName '(' arguments ')' #noAssignFunctionCall;
 arguments : IDENTIFIER ',' arguments | NUMBER ',' arguments | NUMBER  | IDENTIFIER |  ;
+openBrace : '{' #OpenBracket;
+closeBrace: '}' #CloseBracke;
 //Terminals
 BOOLVALUES : 'true' | 'false' ;
 IDENTIFIER : [a-zA-Z][a-zA-Z0-9]* ;

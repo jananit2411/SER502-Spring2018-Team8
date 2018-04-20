@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -402,4 +402,18 @@ public class StarkBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitArguments(StarkParser.ArgumentsContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitOpenBracket(StarkParser.OpenBracketContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitCloseBracke(StarkParser.CloseBrackeContext ctx) { return visitChildren(ctx); }
 }

@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -662,4 +662,28 @@ public interface StarkListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArguments(StarkParser.ArgumentsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpenBracket}
+	 * labeled alternative in {@link StarkParser#openBrace}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpenBracket(StarkParser.OpenBracketContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpenBracket}
+	 * labeled alternative in {@link StarkParser#openBrace}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpenBracket(StarkParser.OpenBracketContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CloseBracke}
+	 * labeled alternative in {@link StarkParser#closeBrace}.
+	 * @param ctx the parse tree
+	 */
+	void enterCloseBracke(StarkParser.CloseBrackeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CloseBracke}
+	 * labeled alternative in {@link StarkParser#closeBrace}.
+	 * @param ctx the parse tree
+	 */
+	void exitCloseBracke(StarkParser.CloseBrackeContext ctx);
 }

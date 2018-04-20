@@ -812,7 +812,56 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitCondition(StarkParser.ConditionContext ctx) {
-        System.out.println("JumpIfFalse ExitIf");
+        if(ctx.parent.getText().contains("else")) {
+            System.out.println("JumpIfFalse BeginElse");
+        }
+        else {
+            System.out.println("JumpIfFalse ExitIf");
+        }
     }
+    /**
+     * {@inheritDoc}
+     *
+     */
+    @Override public void enterElseStmt(StarkParser.ElseStmtContext ctx) {
+        System.out.println("BeginElse");
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitElseStmt(StarkParser.ElseStmtContext ctx) {
+        System.out.println("EndElse");
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterOpenBracket(StarkParser.OpenBracketContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitOpenBracket(StarkParser.OpenBracketContext ctx) {
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterCloseBracke(StarkParser.CloseBrackeContext ctx) {
+
+            System.out.println("JumpToLabel ExitElse");
+
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitCloseBracke(StarkParser.CloseBrackeContext ctx) { }
     //till here
 }

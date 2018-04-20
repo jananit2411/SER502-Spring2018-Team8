@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -393,4 +393,18 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitArguments(StarkParser.ArgumentsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpenBracket}
+	 * labeled alternative in {@link StarkParser#openBrace}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpenBracket(StarkParser.OpenBracketContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code CloseBracke}
+	 * labeled alternative in {@link StarkParser#closeBrace}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCloseBracke(StarkParser.CloseBrackeContext ctx);
 }
