@@ -1,12 +1,22 @@
 package compiler.antlrGenerated;
 
+import java.io.PrintWriter;
+
 /**
  * This interface defines a complete listener for a parse tree produced by
  * {@link StarkParser}.
  */
 public class MyStarkListener extends StarkBaseListener {
 
+	public static final String ENCODING ="UTF-8";
+	private final String NEWLINE = "\n";
+	private StringBuilder stringBuilder=new StringBuilder();
     String lableinfunctioncall=null;
+    String destPath;
+    
+    public MyStarkListener(String destPath){
+    	this.destPath=destPath;
+    }
     /**
      * Enter a parse tree produced by {@link StarkParser#program}.
      * @param ctx the parse tree
@@ -19,9 +29,18 @@ public class MyStarkListener extends StarkBaseListener {
      * Exit a parse tree produced by {@link StarkParser#program}.
      * @param ctx the parse tree
      */
-    public  void exitProgram(StarkParser.ProgramContext ctx){
-        System.out.println("Program exited");
-    };
+    public  void exitProgram(StarkParser.ProgramContext ctx){    	
+    	String intermediateProgram = stringBuilder.toString();
+		//System.out.print("Inside Exit Program \n ");
+		try {
+			PrintWriter writer = new PrintWriter(destPath);
+			writer.write(intermediateProgram);
+			writer.close();
+		} catch (Exception e){
+			System.out.println(" Exception writing to file" );
+		}
+	
+	}
     /**
      * Enter a parse tree produced by {@link StarkParser#statementList}.
      * @param ctx the parse tree
@@ -58,6 +77,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     public void exitAssignmentStmt(StarkParser.AssignmentStmtContext ctx){
       //  System.out.println("exit assignment statement");
+      stringBuilder.append("STORE " + ctx.varName.getText().toUpperCase()+NEWLINE);
       System.out.println("STORE " + ctx.varName.getText().toUpperCase());
     };
     /**
@@ -65,6 +85,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void enterWhileStatement(StarkParser.WhileStatementContext ctx){
+    	stringBuilder.append("ENTERWHILE"+NEWLINE);
         System.out.println("EnterWhile");
     };
     /**
@@ -72,7 +93,10 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitWhileStatement(StarkParser.WhileStatementContext ctx){
+    	stringBuilder.append("JUMP ENTERWHILE"+NEWLINE);
         System.out.println("Jump EnterWhile");
+        
+        stringBuilder.append("EXITWHILE"+NEWLINE);
         System.out.println("ExitWhile");
     };
     /**
@@ -90,6 +114,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitAddExpression(StarkParser.AddExpressionContext ctx) {
         System.out.println("Add");
+        stringBuilder.append("ADD"+NEWLINE);
     //    System.out.println("Exit add expression");
     }
     @Override public void enterDivExpression(StarkParser.DivExpressionContext ctx) { }
@@ -100,6 +125,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitDivExpression(StarkParser.DivExpressionContext ctx) {
         System.out.println("Div");
+        stringBuilder.append("DIV"+NEWLINE);
     }
 
     @Override public void enterSubExpression(StarkParser.SubExpressionContext ctx) { }
@@ -110,6 +136,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitSubExpression(StarkParser.SubExpressionContext ctx) {
         System.out.println("Sub");
+        stringBuilder.append("SUB"+NEWLINE);
     }
 
     @Override public void enterModExpression(StarkParser.ModExpressionContext ctx) { }
@@ -120,6 +147,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitModExpression(StarkParser.ModExpressionContext ctx) {
         System.out.println("Mod");
+        stringBuilder.append("MOD"+NEWLINE);
     }
     /**
      * Enter a parse tree produced by {@link StarkParser#relationalExpression}.
@@ -182,7 +210,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitMulExpresison(StarkParser.MulExpresisonContext ctx) {
         System.out.println("MUL");
-    //    System.out.println("Exit mul expression");
+        stringBuilder.append("MUL"+NEWLINE);
     }
 
     /**
@@ -282,7 +310,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitArgNumber(StarkParser.ArgNumberContext ctx) {
         System.out.println("Push "+ctx.getText());
-
+        stringBuilder.append("PUSH "+ctx.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -297,6 +325,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitArgIdentifier(StarkParser.ArgIdentifierContext ctx) {
         System.out.println("Push "+ctx.getText());
+        stringBuilder.append("PUSH "+ctx.getText()+NEWLINE);
     }
 
     /**
@@ -354,6 +383,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterIntDeclaration(StarkParser.IntDeclarationContext ctx) {
         System.out.println("DecInt "+ctx.getText().substring(3));
+        stringBuilder.append("DECINT "+ctx.getText().substring(3)+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -368,7 +398,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterBoolDeclaration(StarkParser.BoolDeclarationContext ctx) {
         System.out.println("DecBool "+ctx.getText().substring(4));
-
+        stringBuilder.append("DECBOOL "+ctx.getText().substring(4)+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -389,6 +419,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitIfStmt(StarkParser.IfStmtContext ctx) {
         System.out.println("ExitIf");
+        stringBuilder.append("EXITIF"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -420,6 +451,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitDispExpr(StarkParser.DispExprContext ctx) {
         System.out.println("Display");
+        stringBuilder.append("DISPLAY"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -436,6 +468,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitDispFunc(StarkParser.DispFuncContext ctx) {
         System.out.println("Display");
+        stringBuilder.append("DISPLAY"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -451,6 +484,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitEqualsExpression(StarkParser.EqualsExpressionContext ctx) {
         System.out.println("IsEqual");
+        stringBuilder.append("ISEQUAL"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -465,6 +499,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitNotEqualsExpression(StarkParser.NotEqualsExpressionContext ctx) {
         System.out.println("IsNotEqual");
+        stringBuilder.append("ISNOTEQUAL"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -480,6 +515,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitLessExpression(StarkParser.LessExpressionContext ctx) {
         System.out.println("IsLessThan");
+        stringBuilder.append("ISLESSTHAN"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -494,6 +530,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitLessEqualsExpression(StarkParser.LessEqualsExpressionContext ctx) {
         System.out.println("IsLessThanOrEqual");
+        stringBuilder.append("ISLESSTHANOREQUAL"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -507,7 +544,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitGreaterExpression(StarkParser.GreaterExpressionContext ctx) {
-        System.out.println("IsGreaterThanEqual");
+        System.out.println("IsGreaterThan");
+        stringBuilder.append("ISGREATERTHAN"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -521,7 +559,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitGreaterEqualsExpression(StarkParser.GreaterEqualsExpressionContext ctx) {
-        System.out.println("IsGreaterThanEqual");
+        System.out.println("IsGreaterThanOrEqual");
+        stringBuilder.append("ISGREATERTHANOREQUAL"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -537,6 +576,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
         System.out.println("IsEqualToBool");
+        stringBuilder.append("ISEQUALTOBOOL"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -551,6 +591,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitNotEqualsValue(StarkParser.NotEqualsValueContext ctx) {
         System.out.println("IsNotEqualToBool");
+        stringBuilder.append("ISNOTEQUALTOBOOL"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -565,6 +606,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitRelationalAnd(StarkParser.RelationalAndContext ctx) {
         System.out.println("And");
+        stringBuilder.append("AND"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -579,6 +621,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitRelationalOr(StarkParser.RelationalOrContext ctx) {
         System.out.println("Or");
+        stringBuilder.append("OR"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -593,6 +636,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitLogicalAnd(StarkParser.LogicalAndContext ctx) {
         System.out.println("And");
+        stringBuilder.append("AND"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -607,6 +651,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitLogicalOr(StarkParser.LogicalOrContext ctx) {
         System.out.println("Or");
+        stringBuilder.append("OR"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -622,6 +667,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitRelationalNot(StarkParser.RelationalNotContext ctx) {
         System.out.println("Not");
+        stringBuilder.append("NOT"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -636,6 +682,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitLogicalNot(StarkParser.LogicalNotContext ctx) {
         System.out.println("Not");
+        stringBuilder.append("NOT"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -698,6 +745,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitIdentifier(StarkParser.IdentifierContext ctx) {
         System.out.println("Push "+ ctx.getText());
+        stringBuilder.append("PUSH "+ctx.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -706,6 +754,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterNumber(StarkParser.NumberContext ctx) {
         System.out.println("Push "+ ctx.getText());
+        stringBuilder.append("PUSH "+ctx.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -719,8 +768,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
-
         System.out.println("Begin Func "+ ctx.name.getText());
+        stringBuilder.append("BEGIN FUNC "+ctx.name.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -729,7 +778,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
         System.out.println("End Func "+ ctx.name.getText());//+ lableinfunctioncall;
-
+        stringBuilder.append("END FUNC "+ctx.name.getText());
     }
     /**
      * {@inheritDoc}
@@ -738,6 +787,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
         System.out.println("Begin Func "+ctx.name.getText());
+        stringBuilder.append("BEGIN FUNC "+ctx.name.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -746,6 +796,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
         System.out.println("End Func");
+        stringBuilder.append("END FUNC"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -796,6 +847,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterDummyIdentifier(StarkParser.DummyIdentifierContext ctx) {
         System.out.println("Push "+ctx.name.getText());
+        stringBuilder.append("PUSH "+ctx.name.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -810,6 +862,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterDummyNumber(StarkParser.DummyNumberContext ctx) {
         System.out.println("Push "+ctx.name.getText());
+        stringBuilder.append("PUSH "+ctx.name.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -840,6 +893,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitReturnInt(StarkParser.ReturnIntContext ctx) {
         System.out.println("return") ;
+        stringBuilder.append("RETURN"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -847,7 +901,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterReturnBool(StarkParser.ReturnBoolContext ctx) {
-        System.out.println("return") ;
+        System.out.println("return");
+        stringBuilder.append("RETURN"+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -885,6 +940,10 @@ public class MyStarkListener extends StarkBaseListener {
         System.out.println("Call "+ctx.name.getText());
         System.out.println("End Call");
         System.out.println("Store "+ctx.varname.getText());
+        
+        stringBuilder.append("CALL "+ctx.name.getText()+NEWLINE);
+        stringBuilder.append("END CALL"+NEWLINE);
+        stringBuilder.append("STORE "+ctx.varname.getText()+NEWLINE);
     }
     @Override public void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
 
@@ -893,23 +952,31 @@ public class MyStarkListener extends StarkBaseListener {
         System.out.println("Call "+ctx.name.getText());
         System.out.println("End Call");
 
+        stringBuilder.append("CALL "+ctx.name.getText()+NEWLINE);
+        stringBuilder.append("END CALL"+NEWLINE);
    }
     @Override public void enterCondition(StarkParser.ConditionContext ctx) { }
     @Override public void exitCondition(StarkParser.ConditionContext ctx) {
         if(ctx.parent.getText().contains("else")) {
             System.out.println("JumpIfFalse BeginElse");
+            
+            stringBuilder.append("JUMPIFFALSE BEGINELSE"+NEWLINE);
         }
         else {
             System.out.println("JumpIfFalse ExitIf");
+            
+            stringBuilder.append("JUMPIFFALSE EXITIF"+NEWLINE);
         }
     }
     @Override public void enterElseStmt(StarkParser.ElseStmtContext ctx) {
 
         System.out.println("BeginElse");
+        stringBuilder.append("BEGINELSE"+NEWLINE);
     }
     @Override public void exitElseStmt(StarkParser.ElseStmtContext ctx)
     {
         System.out.println("EndElse");
+        stringBuilder.append("ENDELSE"+NEWLINE);
     }
     @Override public void enterOpenBracket(StarkParser.OpenBracketContext ctx) { }
     @Override public void exitOpenBracket(StarkParser.OpenBracketContext ctx) {
@@ -917,11 +984,13 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterCloseBracket(StarkParser.CloseBracketContext ctx) {
 
             System.out.println("JumpToLabel ExitElse");
+            stringBuilder.append("JUMPTOLABEL EXITELSE"+NEWLINE);
     }
     @Override public void exitCloseBracket(StarkParser.CloseBracketContext ctx) { }
     @Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }
     @Override public void exitWhileCondition(StarkParser.WhileConditionContext ctx) {
         System.out.println("JumpIfFalse ExitWhile");
+        stringBuilder.append("JUMPIFFALSE EXITWHILE"+NEWLINE);
     }
     //till here
 }
