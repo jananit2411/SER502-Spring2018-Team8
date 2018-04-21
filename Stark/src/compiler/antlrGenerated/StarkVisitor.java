@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -394,11 +394,40 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link StarkParser#arguments}.
+	 * Visit a parse tree produced by the {@code dummyIdentifier}
+	 * labeled alternative in {@link StarkParser#arguments}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArguments(StarkParser.ArgumentsContext ctx);
+	T visitDummyIdentifier(StarkParser.DummyIdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code dummyNumber}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDummyNumber(StarkParser.DummyNumberContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code argNumber}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArgNumber(StarkParser.ArgNumberContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code argIdentifier}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArgIdentifier(StarkParser.ArgIdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code dummyblank}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDummyblank(StarkParser.DummyblankContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code OpenBracket}
 	 * labeled alternative in {@link StarkParser#openBrace}.
@@ -407,10 +436,10 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOpenBracket(StarkParser.OpenBracketContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code CloseBracke}
+	 * Visit a parse tree produced by the {@code CloseBracket}
 	 * labeled alternative in {@link StarkParser#closeBrace}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCloseBracke(StarkParser.CloseBrackeContext ctx);
+	T visitCloseBracket(StarkParser.CloseBracketContext ctx);
 }

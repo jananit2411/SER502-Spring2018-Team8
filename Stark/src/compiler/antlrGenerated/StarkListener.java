@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -663,15 +663,65 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StarkParser#arguments}.
+	 * Enter a parse tree produced by the {@code dummyIdentifier}
+	 * labeled alternative in {@link StarkParser#arguments}.
 	 * @param ctx the parse tree
 	 */
-	void enterArguments(StarkParser.ArgumentsContext ctx);
+	void enterDummyIdentifier(StarkParser.DummyIdentifierContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StarkParser#arguments}.
+	 * Exit a parse tree produced by the {@code dummyIdentifier}
+	 * labeled alternative in {@link StarkParser#arguments}.
 	 * @param ctx the parse tree
 	 */
-	void exitArguments(StarkParser.ArgumentsContext ctx);
+	void exitDummyIdentifier(StarkParser.DummyIdentifierContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code dummyNumber}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterDummyNumber(StarkParser.DummyNumberContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code dummyNumber}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitDummyNumber(StarkParser.DummyNumberContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code argNumber}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgNumber(StarkParser.ArgNumberContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code argNumber}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgNumber(StarkParser.ArgNumberContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code argIdentifier}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgIdentifier(StarkParser.ArgIdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code argIdentifier}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgIdentifier(StarkParser.ArgIdentifierContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code dummyblank}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterDummyblank(StarkParser.DummyblankContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code dummyblank}
+	 * labeled alternative in {@link StarkParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitDummyblank(StarkParser.DummyblankContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code OpenBracket}
 	 * labeled alternative in {@link StarkParser#openBrace}.
@@ -685,15 +735,15 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitOpenBracket(StarkParser.OpenBracketContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code CloseBracke}
+	 * Enter a parse tree produced by the {@code CloseBracket}
 	 * labeled alternative in {@link StarkParser#closeBrace}.
 	 * @param ctx the parse tree
 	 */
-	void enterCloseBracke(StarkParser.CloseBrackeContext ctx);
+	void enterCloseBracket(StarkParser.CloseBracketContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code CloseBracke}
+	 * Exit a parse tree produced by the {@code CloseBracket}
 	 * labeled alternative in {@link StarkParser#closeBrace}.
 	 * @param ctx the parse tree
 	 */
-	void exitCloseBracke(StarkParser.CloseBrackeContext ctx);
+	void exitCloseBracket(StarkParser.CloseBracketContext ctx);
 }

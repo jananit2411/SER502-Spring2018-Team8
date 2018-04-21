@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -2128,9 +2128,7 @@ public class StarkParser extends Parser {
 		}
 	}
 	public static class FuncWithStmtsContext extends FunctionDefnContext {
-		public FunctionNameContext functionName() {
-			return getRuleContext(FunctionNameContext.class,0);
-		}
+		public FunctionNameContext name;
 		public ParametersContext parameters() {
 			return getRuleContext(ParametersContext.class,0);
 		}
@@ -2139,6 +2137,9 @@ public class StarkParser extends Parser {
 		}
 		public ReturnStatementContext returnStatement() {
 			return getRuleContext(ReturnStatementContext.class,0);
+		}
+		public FunctionNameContext functionName() {
+			return getRuleContext(FunctionNameContext.class,0);
 		}
 		public FuncWithStmtsContext(FunctionDefnContext ctx) { copyFrom(ctx); }
 		@Override
@@ -2156,14 +2157,15 @@ public class StarkParser extends Parser {
 		}
 	}
 	public static class FuncWithoutStmtsContext extends FunctionDefnContext {
-		public FunctionNameContext functionName() {
-			return getRuleContext(FunctionNameContext.class,0);
-		}
+		public FunctionNameContext name;
 		public ParametersContext parameters() {
 			return getRuleContext(ParametersContext.class,0);
 		}
 		public ReturnStatementContext returnStatement() {
 			return getRuleContext(ReturnStatementContext.class,0);
+		}
+		public FunctionNameContext functionName() {
+			return getRuleContext(FunctionNameContext.class,0);
 		}
 		public FuncWithoutStmtsContext(FunctionDefnContext ctx) { copyFrom(ctx); }
 		@Override
@@ -2211,7 +2213,7 @@ public class StarkParser extends Parser {
 				setState(249);
 				match(T__26);
 				setState(250);
-				functionName();
+				((FuncWithStmtsContext)_localctx).name = functionName();
 				setState(251);
 				match(T__5);
 				setState(252);
@@ -2235,7 +2237,7 @@ public class StarkParser extends Parser {
 				setState(259);
 				match(T__26);
 				setState(260);
-				functionName();
+				((FuncWithoutStmtsContext)_localctx).name = functionName();
 				setState(261);
 				match(T__5);
 				setState(262);
@@ -2541,12 +2543,14 @@ public class StarkParser extends Parser {
 		}
 	}
 	public static class AssignFunctionCallContext extends FunctionCallContext {
+		public Token varname;
+		public FunctionNameContext name;
+		public ArgumentsContext arguments() {
+			return getRuleContext(ArgumentsContext.class,0);
+		}
 		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
 		public FunctionNameContext functionName() {
 			return getRuleContext(FunctionNameContext.class,0);
-		}
-		public ArgumentsContext arguments() {
-			return getRuleContext(ArgumentsContext.class,0);
 		}
 		public AssignFunctionCallContext(FunctionCallContext ctx) { copyFrom(ctx); }
 		@Override
@@ -2564,11 +2568,12 @@ public class StarkParser extends Parser {
 		}
 	}
 	public static class NoAssignFunctionCallContext extends FunctionCallContext {
-		public FunctionNameContext functionName() {
-			return getRuleContext(FunctionNameContext.class,0);
-		}
+		public FunctionNameContext name;
 		public ArgumentsContext arguments() {
 			return getRuleContext(ArgumentsContext.class,0);
+		}
+		public FunctionNameContext functionName() {
+			return getRuleContext(FunctionNameContext.class,0);
 		}
 		public NoAssignFunctionCallContext(FunctionCallContext ctx) { copyFrom(ctx); }
 		@Override
@@ -2598,11 +2603,11 @@ public class StarkParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(291);
-				match(IDENTIFIER);
+				((AssignFunctionCallContext)_localctx).varname = match(IDENTIFIER);
 				setState(292);
 				match(T__2);
 				setState(293);
-				functionName();
+				((AssignFunctionCallContext)_localctx).name = functionName();
 				setState(294);
 				match(T__5);
 				setState(295);
@@ -2616,7 +2621,7 @@ public class StarkParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(298);
-				functionName();
+				((NoAssignFunctionCallContext)_localctx).name = functionName();
 				setState(299);
 				match(T__5);
 				setState(300);
@@ -2639,26 +2644,105 @@ public class StarkParser extends Parser {
 	}
 
 	public static class ArgumentsContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
-		public ArgumentsContext arguments() {
-			return getRuleContext(ArgumentsContext.class,0);
-		}
-		public TerminalNode NUMBER() { return getToken(StarkParser.NUMBER, 0); }
 		public ArgumentsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arguments; }
+	 
+		public ArgumentsContext() { }
+		public void copyFrom(ArgumentsContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ArgIdentifierContext extends ArgumentsContext {
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
+		public ArgIdentifierContext(ArgumentsContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterArguments(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterArgIdentifier(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitArguments(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitArgIdentifier(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitArguments(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitArgIdentifier(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class DummyIdentifierContext extends ArgumentsContext {
+		public Token name;
+		public ArgumentsContext arguments() {
+			return getRuleContext(ArgumentsContext.class,0);
+		}
+		public TerminalNode IDENTIFIER() { return getToken(StarkParser.IDENTIFIER, 0); }
+		public DummyIdentifierContext(ArgumentsContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterDummyIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitDummyIdentifier(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitDummyIdentifier(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class DummyNumberContext extends ArgumentsContext {
+		public Token name;
+		public ArgumentsContext arguments() {
+			return getRuleContext(ArgumentsContext.class,0);
+		}
+		public TerminalNode NUMBER() { return getToken(StarkParser.NUMBER, 0); }
+		public DummyNumberContext(ArgumentsContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterDummyNumber(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitDummyNumber(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitDummyNumber(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ArgNumberContext extends ArgumentsContext {
+		public TerminalNode NUMBER() { return getToken(StarkParser.NUMBER, 0); }
+		public ArgNumberContext(ArgumentsContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterArgNumber(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitArgNumber(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitArgNumber(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class DummyblankContext extends ArgumentsContext {
+		public DummyblankContext(ArgumentsContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterDummyblank(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitDummyblank(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitDummyblank(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2671,10 +2755,11 @@ public class StarkParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
+				_localctx = new DummyIdentifierContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(305);
-				match(IDENTIFIER);
+				((DummyIdentifierContext)_localctx).name = match(IDENTIFIER);
 				setState(306);
 				match(T__27);
 				setState(307);
@@ -2682,10 +2767,11 @@ public class StarkParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new DummyNumberContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(308);
-				match(NUMBER);
+				((DummyNumberContext)_localctx).name = match(NUMBER);
 				setState(309);
 				match(T__27);
 				setState(310);
@@ -2693,6 +2779,7 @@ public class StarkParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new ArgNumberContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(311);
@@ -2700,6 +2787,7 @@ public class StarkParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new ArgIdentifierContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(312);
@@ -2707,6 +2795,7 @@ public class StarkParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new DummyblankContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				}
@@ -2785,19 +2874,19 @@ public class StarkParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class CloseBrackeContext extends CloseBraceContext {
-		public CloseBrackeContext(CloseBraceContext ctx) { copyFrom(ctx); }
+	public static class CloseBracketContext extends CloseBraceContext {
+		public CloseBracketContext(CloseBraceContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterCloseBracke(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).enterCloseBracket(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitCloseBracke(this);
+			if ( listener instanceof StarkListener ) ((StarkListener)listener).exitCloseBracket(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitCloseBracke(this);
+			if ( visitor instanceof StarkVisitor ) return ((StarkVisitor<? extends T>)visitor).visitCloseBracket(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2806,7 +2895,7 @@ public class StarkParser extends Parser {
 		CloseBraceContext _localctx = new CloseBraceContext(_ctx, getState());
 		enterRule(_localctx, 50, RULE_closeBrace);
 		try {
-			_localctx = new CloseBrackeContext(_localctx);
+			_localctx = new CloseBracketContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(318);

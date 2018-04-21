@@ -5,6 +5,8 @@ package compiler.antlrGenerated;
  * {@link StarkParser}.
  */
 public class MyStarkListener extends StarkBaseListener {
+
+    String lableinfunctioncall=null;
     /**
      * Enter a parse tree produced by {@link StarkParser#program}.
      * @param ctx the parse tree
@@ -25,7 +27,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void enterStatementList(StarkParser.StatementListContext ctx){
-       // System.out.println("statement list entered");
+       // System.out.println("statement list entered")
     };
     /**
      * Exit a parse tree produced by {@link StarkParser#statementList}.
@@ -70,7 +72,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitWhileStatement(StarkParser.WhileStatementContext ctx){
-        System.out.println("JumpToLabel EnterWhile");
+        System.out.println("Jump EnterWhile");
         System.out.println("ExitWhile");
     };
     /**
@@ -180,7 +182,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitMulExpresison(StarkParser.MulExpresisonContext ctx) {
         System.out.println("MUL");
-        System.out.println("Exit mul expression");
+    //    System.out.println("Exit mul expression");
     }
 
     /**
@@ -272,6 +274,31 @@ public class MyStarkListener extends StarkBaseListener {
     public void exitArguments(StarkParser.ArgumentsContext ctx){};
 
     //here
+    @Override public void enterArgNumber(StarkParser.ArgNumberContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitArgNumber(StarkParser.ArgNumberContext ctx) {
+        System.out.println("Push "+ctx.getText());
+
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterArgIdentifier(StarkParser.ArgIdentifierContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitArgIdentifier(StarkParser.ArgIdentifierContext ctx) {
+        System.out.println("Push "+ctx.getText());
+    }
+
     /**
      * {@inheritDoc}
      *
@@ -325,7 +352,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterIntDeclaration(StarkParser.IntDeclarationContext ctx) { }
+    @Override public void enterIntDeclaration(StarkParser.IntDeclarationContext ctx) {
+        System.out.println("DecInt "+ctx.getText().substring(3));
+    }
     /**
      * {@inheritDoc}
      *
@@ -337,7 +366,10 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterBoolDeclaration(StarkParser.BoolDeclarationContext ctx) { }
+    @Override public void enterBoolDeclaration(StarkParser.BoolDeclarationContext ctx) {
+        System.out.println("DecBool "+ctx.getText().substring(4));
+
+    }
     /**
      * {@inheritDoc}
      *
@@ -386,7 +418,9 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitDispExpr(StarkParser.DispExprContext ctx) { }
+    @Override public void exitDispExpr(StarkParser.DispExprContext ctx) {
+        System.out.println("Display");
+    }
     /**
      * {@inheritDoc}
      *
@@ -396,9 +430,13 @@ public class MyStarkListener extends StarkBaseListener {
     /**
      * {@inheritDoc}
      *
+     *
+     *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitDispFunc(StarkParser.DispFuncContext ctx) { }
+    @Override public void exitDispFunc(StarkParser.DispFuncContext ctx) {
+        System.out.println("Display");
+    }
     /**
      * {@inheritDoc}
      *
@@ -658,14 +696,16 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitIdentifier(StarkParser.IdentifierContext ctx) { }
+    @Override public void exitIdentifier(StarkParser.IdentifierContext ctx) {
+        System.out.println("Push "+ ctx.getText());
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterNumber(StarkParser.NumberContext ctx) {
-        System.out.println("Push"+ ctx.getText());
+        System.out.println("Push "+ ctx.getText());
     }
     /**
      * {@inheritDoc}
@@ -678,25 +718,35 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) { }
+    @Override public void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
+
+        System.out.println("Begin Func "+ ctx.name.getText());
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) { }
+    @Override public void exitFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
+        System.out.println("End Func "+ ctx.name.getText());//+ lableinfunctioncall;
+
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) { }
+    @Override public void enterFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
+        System.out.println("Begin Func "+ctx.name.getText());
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) { }
+    @Override public void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
+        System.out.println("End Func");
+    }
     /**
      * {@inheritDoc}
      *
@@ -714,19 +764,25 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterFunName(StarkParser.FunNameContext ctx) { }
+    @Override public void enterFunName(StarkParser.FunNameContext ctx) {
+
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitFunName(StarkParser.FunNameContext ctx) { }
+    @Override public void exitFunName(StarkParser.FunNameContext ctx) {
+       // System.out.print(ctx.getText().toUpperCase());
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterMultParam(StarkParser.MultParamContext ctx) { }
+    @Override public void enterMultParam(StarkParser.MultParamContext ctx) {
+
+    }
     /**
      * {@inheritDoc}
      *
@@ -738,6 +794,32 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
+    @Override public void enterDummyIdentifier(StarkParser.DummyIdentifierContext ctx) {
+        System.out.println("Push "+ctx.name.getText());
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitDummyIdentifier(StarkParser.DummyIdentifierContext ctx) { }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void enterDummyNumber(StarkParser.DummyNumberContext ctx) {
+        System.out.println("Push "+ctx.name.getText());
+    }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override public void exitDummyNumber(StarkParser.DummyNumberContext ctx) {
+
+    }
+
     @Override public void enterSingleParam(StarkParser.SingleParamContext ctx) { }
     /**
      * {@inheritDoc}
@@ -756,13 +838,17 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitReturnInt(StarkParser.ReturnIntContext ctx) { }
+    @Override public void exitReturnInt(StarkParser.ReturnIntContext ctx) {
+        System.out.println("return") ;
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterReturnBool(StarkParser.ReturnBoolContext ctx) { }
+    @Override public void enterReturnBool(StarkParser.ReturnBoolContext ctx) {
+        System.out.println("return") ;
+    }
     /**
      * {@inheritDoc}
      *
@@ -786,36 +872,29 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) { }
+    @Override public void enterAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) {
+
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
+    @Override public void exitAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) {
+
+        System.out.println("Call "+ctx.name.getText());
+        System.out.println("End Call");
+        System.out.println("Store "+ctx.varname.getText());
+    }
+    @Override public void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
+
+    }
+    @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
+        System.out.println("Call "+ctx.name.getText());
+        System.out.println("End Call");
+
+   }
     @Override public void enterCondition(StarkParser.ConditionContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
     @Override public void exitCondition(StarkParser.ConditionContext ctx) {
         if(ctx.parent.getText().contains("else")) {
             System.out.println("JumpIfFalse BeginElse");
@@ -824,63 +903,25 @@ public class MyStarkListener extends StarkBaseListener {
             System.out.println("JumpIfFalse ExitIf");
         }
     }
-    /**
-     * {@inheritDoc}
-     *
-     */
     @Override public void enterElseStmt(StarkParser.ElseStmtContext ctx) {
+
         System.out.println("BeginElse");
     }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void exitElseStmt(StarkParser.ElseStmtContext ctx) {
+    @Override public void exitElseStmt(StarkParser.ElseStmtContext ctx)
+    {
         System.out.println("EndElse");
     }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
     @Override public void enterOpenBracket(StarkParser.OpenBracketContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
     @Override public void exitOpenBracket(StarkParser.OpenBracketContext ctx) {
     }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void enterCloseBracke(StarkParser.CloseBrackeContext ctx) {
+    @Override public void enterCloseBracket(StarkParser.CloseBracketContext ctx) {
 
             System.out.println("JumpToLabel ExitElse");
-
     }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void exitCloseBracke(StarkParser.CloseBrackeContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
+    @Override public void exitCloseBracket(StarkParser.CloseBracketContext ctx) { }
     @Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
     @Override public void exitWhileCondition(StarkParser.WhileConditionContext ctx) {
-        System.out.println("IfFalseCondition JumpToExitWhile");
+        System.out.println("JumpIfFalse ExitWhile");
     }
     //till here
 }

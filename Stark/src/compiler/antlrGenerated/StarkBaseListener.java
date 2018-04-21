@@ -1,4 +1,4 @@
-package compiler.antlrGenerated;// Generated from C:/Users/SUHAS/git/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
+package compiler.antlrGenerated;// Generated from D:/SER502 Project/SER502-Spring2018-Team8/Stark/doc\Stark.g4 by ANTLR 4.7
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -687,13 +687,61 @@ public class StarkBaseListener implements StarkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArguments(StarkParser.ArgumentsContext ctx) { }
+	@Override public void enterDummyIdentifier(StarkParser.DummyIdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArguments(StarkParser.ArgumentsContext ctx) { }
+	@Override public void exitDummyIdentifier(StarkParser.DummyIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDummyNumber(StarkParser.DummyNumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDummyNumber(StarkParser.DummyNumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArgNumber(StarkParser.ArgNumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArgNumber(StarkParser.ArgNumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArgIdentifier(StarkParser.ArgIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArgIdentifier(StarkParser.ArgIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDummyblank(StarkParser.DummyblankContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDummyblank(StarkParser.DummyblankContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -711,13 +759,13 @@ public class StarkBaseListener implements StarkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCloseBracke(StarkParser.CloseBrackeContext ctx) { }
+	@Override public void enterCloseBracket(StarkParser.CloseBracketContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCloseBracke(StarkParser.CloseBrackeContext ctx) { }
+	@Override public void exitCloseBracket(StarkParser.CloseBracketContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
