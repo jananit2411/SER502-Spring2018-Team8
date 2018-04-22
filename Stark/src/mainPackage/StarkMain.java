@@ -1,9 +1,8 @@
 package mainPackage;
-import compiler.antlrGenerated.MyStarkListener;
+import compiler.MyStarkListener;
 import compiler.antlrGenerated.StarkLexer;
 import compiler.antlrGenerated.StarkParser;
 
-import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
