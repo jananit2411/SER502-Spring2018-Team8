@@ -1,7 +1,6 @@
 grammar Stark;
 
 program :  statementList functionDefn ;
-
 statementList : statement  statementList |
                 statement;
 
@@ -13,10 +12,8 @@ statement : declarationStmt ';' |
             displayStatement ';' |
             functionCall ';';
 
-initializationStmt: 'int' IDENTIFIER '=' expression #initIntExpression|
-                    'bool' IDENTIFIER '=' boolExpression #initBoolExpression|
-                    'int' IDENTIFIER '=' functionCall #initIntFunctionCall|
-                    'bool' IDENTIFIER '=' functionCall #initBoolFunctionCall;
+initializationStmt: 'int' varName=IDENTIFIER '=' expression #initIntExpression|
+                    'bool' varName=IDENTIFIER '=' boolExpression #initBoolExpression;
 
 declarationStmt : 'int' varName = IDENTIFIER #intDeclaration
                   |'bool' varName = IDENTIFIER #boolDeclaration;

@@ -42,20 +42,6 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInitBoolExpression(StarkParser.InitBoolExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code initIntFunctionCall}
-	 * labeled alternative in {@link StarkParser#initializationStmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code initBoolFunctionCall}
-	 * labeled alternative in {@link StarkParser#initializationStmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code intDeclaration}
 	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree

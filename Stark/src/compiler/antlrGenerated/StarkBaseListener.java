@@ -75,30 +75,6 @@ public class StarkBaseListener implements StarkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterIntDeclaration(StarkParser.IntDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}

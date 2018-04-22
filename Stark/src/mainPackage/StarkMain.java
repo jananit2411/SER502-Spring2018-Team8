@@ -13,8 +13,9 @@ import java.io.IOException;
 public class StarkMain {
 
 	public static void main(String args[]){
-		String srcPath ="C:\\Users\\Janani\\git\\SER502-Spring2018-Team8\\Stark\\data\\stark_programs\\assign.txt";
-		String destPath ="C:\\Users\\Janani\\git\\SER502-Spring2018-Team8\\Stark\\data\\intermediate_code\\assignIC.txt";
+
+		String srcPath ="data\\stark_programs\\assign.txt";
+		String destPath ="data\\intermediate_code\\assignIC.txt";
 		org.antlr.v4.runtime.ANTLRInputStream input = null;
 		try {
 			input = new org.antlr.v4.runtime.ANTLRFileStream(srcPath);

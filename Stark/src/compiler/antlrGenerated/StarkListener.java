@@ -61,30 +61,6 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitInitBoolExpression(StarkParser.InitBoolExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code initIntFunctionCall}
-	 * labeled alternative in {@link StarkParser#initializationStmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code initIntFunctionCall}
-	 * labeled alternative in {@link StarkParser#initializationStmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitInitIntFunctionCall(StarkParser.InitIntFunctionCallContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code initBoolFunctionCall}
-	 * labeled alternative in {@link StarkParser#initializationStmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code initBoolFunctionCall}
-	 * labeled alternative in {@link StarkParser#initializationStmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitInitBoolFunctionCall(StarkParser.InitBoolFunctionCallContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code intDeclaration}
 	 * labeled alternative in {@link StarkParser#declarationStmt}.
 	 * @param ctx the parse tree
