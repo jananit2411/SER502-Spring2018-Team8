@@ -132,7 +132,25 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-				}
+				} else if (line.startsWith("AND")) {
+				    if(boolStack.pop()&&boolStack.pop()) {
+				        boolStack.push(true);
+                    } else {
+				        boolStack.push(false);
+                    }
+                } else if (line.startsWith("OR")) {
+                    if(boolStack.pop() || boolStack.pop()) {
+                        boolStack.push(true);
+                    } else {
+                        boolStack.push(false);
+                    }
+                } else if (line.startsWith("NOT")) {
+                    if(!boolStack.pop()) {
+                        boolStack.push(true);
+                    } else {
+                        boolStack.push(false);
+                    }
+                }
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
