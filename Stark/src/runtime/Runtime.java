@@ -33,10 +33,12 @@ public class Runtime {
 		try {
 			FileReader reader = new FileReader(intermediateFilePath);
 			BufferedReader bufferReader = new BufferedReader(reader);
-			while ((line = bufferReader.readLine()) != null) {
+			line = getNextInstruction(bufferReader,"");
+			while (line != null) {
 				if (line.startsWith("DECINT")) {
 					String var = line.split(" ")[1];
 					intMap.put(var, 0);
+					line = getNextInstruction(bufferReader,"");
 					// intList.add(var);
 				} else if (line.startsWith("DECBOOL")) {
 					String var = line.split(" ")[1];
@@ -49,6 +51,7 @@ public class Runtime {
 					} else if (boolMap.containsKey(var)) {
 						boolMap.put(line.split(" ")[1], boolStack.pop());
 					}
+					line =getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("PUSH")) {
 					String str = line.split(" ")[1];
 					if (checkInt(str)) {
@@ -56,6 +59,7 @@ public class Runtime {
 					} else {
 						boolStack.push(Boolean.parseBoolean(str));
 					}
+					line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("DISPLAY")) {
 					String str = line.split(" ")[1];
 					if (intMap.containsKey(str)) {
@@ -64,6 +68,7 @@ public class Runtime {
 					} else if (boolMap.containsKey(str)) {
 						System.out.println(boolStack.pop());
 					}
+					line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("LOAD")) {
 					String str = line.split(" ")[1];
 					if (intMap.containsKey(str)) {
@@ -71,8 +76,10 @@ public class Runtime {
 					} else if (boolMap.containsKey(str)) {
 						boolStack.push(boolMap.get(str));
 					}
+					line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("ADD")) {
 					intStack.push(intStack.pop() + intStack.pop());
+					line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("SUB")) {
 					intStack.push(intStack.pop() - intStack.pop());
 				} else if (line.startsWith("MUL")) {
@@ -151,6 +158,7 @@ public class Runtime {
                         boolStack.push(false);
                     }
                 }
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -164,5 +172,26 @@ public class Runtime {
 		} catch (NumberFormatException e) {
 			return false;
 		}
+	}
+
+	String getNextInstruction(BufferedReader bufferReader,String label) {
+		String line = "";
+		try {
+			line = bufferReader.readLine();
+
+			if (label == "") {
+				return line;
+			} else {
+
+				while (!(line.startsWith(label))) {
+					line = bufferReader.readLine();
+				}
+				return line;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return "";
 	}
 }
