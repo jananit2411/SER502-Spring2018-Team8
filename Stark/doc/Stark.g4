@@ -41,8 +41,8 @@ relationalExpression : expression '==' expression #equalsExpression|
                        expression '<=' expression #lessEqualsExpression|
                        expression '>' expression  #greaterExpression|
                        expression '>=' expression #greaterEqualsExpression|
-                       expression '==' BOOLVALUES #equalsBooValue|
-                       expression '!=' BOOLVALUES #notEqualsValue;
+                       IDENTIFIER '==' boolVal=BOOLVALUES #equalsBooValue|
+                       IDENTIFIER '!=' boolVal=BOOLVALUES #notEqualsValue;
 
 logicalExpression : relationalExpression '&&' relationalExpression #relationalAnd|
                     relationalExpression '||' relationalExpression #relationalOr |

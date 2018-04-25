@@ -562,6 +562,9 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
+        System.out.println("PUSH "+ctx.boolVal.getText());
+        stringBuilder.append("PUSH "+ctx.boolVal.getText()+NEWLINE);
+
     }
     /**
      * {@inheritDoc}
@@ -569,7 +572,9 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
-        System.out.println("IsEqualToBool");
+        System.out.println("LOAD "+ctx.IDENTIFIER().getText());
+        System.out.println("EQB");
+        stringBuilder.append("LOAD "+ctx.IDENTIFIER().getText());
         stringBuilder.append("EQB"+NEWLINE);
     }
     /**
@@ -709,7 +714,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterBoolValue(StarkParser.BoolValueContext ctx) {
     	System.out.println("Push "+ctx.getText());
-        stringBuilder.append("BOOL "+ctx.getText()+NEWLINE);
+        stringBuilder.append("PUSH "+ctx.getText()+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -743,6 +748,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void exitIdentifier(StarkParser.IdentifierContext ctx) {
         System.out.println("LOAD "+ ctx.getText());
         stringBuilder.append("LOAD "+ctx.getText()+NEWLINE);
+
     }
     /**
      * {@inheritDoc}
