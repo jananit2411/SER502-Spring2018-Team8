@@ -124,13 +124,15 @@ public class Runtime {
 					}
 					boolStack.push(result);
 				} else if (line.equalsIgnoreCase("GT")) {
-					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
+					int firstValue = intStack.pop();
 					boolean result = false;
 					if (firstValue > secondValue) {
 						result = true;
 					}
 					boolStack.push(result);
+					line = getNextInstruction(bufferReader,"");
+
 				} else if (line.startsWith("GTE")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -165,6 +167,15 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+				}else if (line.startsWith("JIF")){
+					//boolean check = boolStack.pop();
+					if(boolStack.pop()){
+					line=getNextInstruction(bufferReader,"");
+					}
+					else {
+						String label= line.split(" ")[1];
+						line = getNextInstruction(bufferReader,label);
+					}
 				}
 
 			}
