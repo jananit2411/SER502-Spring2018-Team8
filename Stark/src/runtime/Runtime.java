@@ -21,14 +21,15 @@ public class Runtime {
 
 	public static void main(String args[]) {
 		Runtime runtime = new Runtime("data\\intermediate_code\\assignIC.txt");
+		runtime.evaluateProgram();
 	}
 
 	public Runtime(String path) {
 		intermediateFilePath = path;
-		EvaluateProgram();
+
 	}
 
-	public void EvaluateProgram() {
+	public void evaluateProgram() {
 		String line = null;
 		try {
 			FileReader reader = new FileReader(intermediateFilePath);
@@ -45,9 +46,9 @@ public class Runtime {
 				} else if (line.startsWith("STORE")) {
 					String var = line.split(" ")[1];
 					if (intMap.containsKey(var)) {
-						intMap.put(line.split(" ")[1], intStack.pop());
+						intMap.put(var, intStack.pop());
 					} else if (boolMap.containsKey(var)) {
-						boolMap.put(line.split(" ")[1], boolStack.pop());
+						boolMap.put(var, boolStack.pop());
 					}
 				} else if (line.startsWith("PUSH")) {
 					String str = line.split(" ")[1];
@@ -84,7 +85,7 @@ public class Runtime {
 						intStack.push(y / x);
 					else
 						System.out.println("ERROR:Cannot Divide by zero");
-				} else if (line.startsWith("EQ")) {
+				} else if (line.equalsIgnoreCase("EQ")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
 					boolean result = false;
@@ -100,7 +101,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-				} else if (line.startsWith("LT")) {
+				} else if (line.equalsIgnoreCase("LT")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
 					boolean result = false;
@@ -116,7 +117,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-				} else if (line.startsWith("GT")) {
+				} else if (line.equalsIgnoreCase("GT")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
 					boolean result = false;
@@ -124,7 +125,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-				} else if (line.startsWith("LTE")) {
+				} else if (line.startsWith("GTE")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
 					boolean result = false;
@@ -150,7 +151,15 @@ public class Runtime {
                     } else {
                         boolStack.push(false);
                     }
-                }
+                } else if (line.startsWith("EQB")){
+					boolean firstValue = boolStack.pop();
+					boolean secondValue = boolStack.pop();
+					boolean result = false;
+					if (firstValue == secondValue) {
+						result = true;
+					}
+					boolStack.push(result);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

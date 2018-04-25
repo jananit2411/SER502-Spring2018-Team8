@@ -1,7 +1,4 @@
-int d=10;
-int c=d;
-bool e;
-e= c==d;
-display e;
-e= !c!=d;
-display e;
+//bool e=true;
+bool f;
+f=false;
+display f;
