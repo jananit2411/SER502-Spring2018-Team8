@@ -9,6 +9,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.idea/vcs.xml
 
 # External tool builders
 .externalToolBuilders/
