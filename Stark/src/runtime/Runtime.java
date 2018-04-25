@@ -44,6 +44,7 @@ public class Runtime {
 					String var = line.split(" ")[1];
 					boolMap.put(line.split(" ")[1], false);
 					// boolList.add(var);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("STORE")) {
 					String var = line.split(" ")[1];
 					if (intMap.containsKey(var)) {
@@ -82,8 +83,10 @@ public class Runtime {
                     line = getNextInstruction(bufferReader,"");
                 } else if (line.startsWith("SUB")) {
 					intStack.push(intStack.pop() - intStack.pop());
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("MUL")) {
 					intStack.push(intStack.pop() * intStack.pop());
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("DIV")) {
 					int x = intStack.pop();
 					int y = intStack.pop();
@@ -91,6 +94,7 @@ public class Runtime {
 						intStack.push(y / x);
 					else
 						System.out.println("ERROR:Cannot Divide by zero");
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.equalsIgnoreCase("EQ")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -99,6 +103,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("NEQ")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -107,6 +112,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.equalsIgnoreCase("LT")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -115,6 +121,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("LTE")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -123,6 +130,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.equalsIgnoreCase("GT")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -131,6 +139,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("GTE")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -139,24 +148,28 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				} else if (line.startsWith("AND")) {
 				    if(boolStack.pop()&&boolStack.pop()) {
 				        boolStack.push(true);
                     } else {
 				        boolStack.push(false);
                     }
+                    line = getNextInstruction(bufferReader,"");
                 } else if (line.startsWith("OR")) {
                     if(boolStack.pop() || boolStack.pop()) {
                         boolStack.push(true);
                     } else {
                         boolStack.push(false);
                     }
+                    line = getNextInstruction(bufferReader,"");
                 } else if (line.startsWith("NOT")) {
                     if(!boolStack.pop()) {
                         boolStack.push(true);
                     } else {
                         boolStack.push(false);
                     }
+                    line = getNextInstruction(bufferReader,"");
                 } else if (line.startsWith("EQB")){
 					boolean firstValue = boolStack.pop();
 					boolean secondValue = boolStack.pop();
@@ -165,6 +178,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
+                    line = getNextInstruction(bufferReader,"");
 				}
 
 			}

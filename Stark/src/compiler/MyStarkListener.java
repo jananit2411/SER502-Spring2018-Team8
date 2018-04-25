@@ -990,7 +990,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterCloseBracket(StarkParser.CloseBracketContext ctx) {
 
             System.out.println("JumpToLabel ExitElse");
-            stringBuilder.append("JMP EXITELSE"+NEWLINE);
+            stringBuilder.append("JMP ENDELSE"+NEWLINE);
     }
     @Override public void exitCloseBracket(StarkParser.CloseBracketContext ctx) { }
     @Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }
