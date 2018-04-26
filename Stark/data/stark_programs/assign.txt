@@ -1,5 +1,6 @@
-int d = 11;
-if (d>12){
-display 1;
+int d = 0;
+while(d<3)
+{
+d = d+1;
+display d;
 }
-display 2;

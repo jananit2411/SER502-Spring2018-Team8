@@ -189,6 +189,16 @@ public class Runtime {
 						line = getNextInstruction(bufferReader,label);
 					}
 
+				} else if (line.startsWith("ENTERWHILE")) {
+					bufferReader.mark(0);
+					line = getNextInstruction(bufferReader,"");
+				} else if(line.startsWith("JUMP")) {
+					line = getNextInstruction(bufferReader,line.split(" ")[1]);
+				} else if (line.startsWith("EXITWHILE")) {
+					line = getNextInstruction(bufferReader,"");
+				} else if ( line.startsWith("JUMP")) {
+					bufferReader.reset();
+					getNextInstruction(bufferReader,"");
 				}
 
 			}
