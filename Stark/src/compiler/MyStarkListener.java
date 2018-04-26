@@ -17,6 +17,8 @@ public class MyStarkListener extends StarkBaseListener {
     String lableinfunctioncall=null;
     String destPath;
     int count=0;
+    int ifElseCounter=0;
+    int whileCounter=0;
     public MyStarkListener(String destPath){
     	this.destPath=destPath;
     }
@@ -88,19 +90,21 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void enterWhileStatement(StarkParser.WhileStatementContext ctx){
-    	stringBuilder.append("ENTERWHILE"+NEWLINE);
-        System.out.println("EnterWhile");
+    	whileCounter++;
+    	stringBuilder.append("BEGINWHILE"+NEWLINE);
+        System.out.println("BeginWhile"+whileCounter);
     };
     /**
      * Exit a parse tree produced by {@link StarkParser#whileStatement}.
      * @param ctx the parse tree
      */
     public void exitWhileStatement(StarkParser.WhileStatementContext ctx){
-    	stringBuilder.append("JUMP ENTERWHILE"+NEWLINE);
-        System.out.println("Jump EnterWhile");
+    	stringBuilder.append("JUMP BEGINWHILE"+NEWLINE);
+        System.out.println("Jump BeginWhile"+whileCounter);
         
         stringBuilder.append("EXITWHILE"+NEWLINE);
-        System.out.println("ExitWhile");
+        System.out.println("ExitWhile"+whileCounter);
+        whileCounter--;
     };
     /**
      * Enter a parse tree produced by the {@code dispFunc}
@@ -964,33 +968,33 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterCondition(StarkParser.ConditionContext ctx) { }
     @Override public void exitCondition(StarkParser.ConditionContext ctx) {
         if(ctx.parent.getText().contains("else")) {
-            System.out.println("JumpIfFalse BeginElse");
-            
-            stringBuilder.append("JIF BEGINELSE"+NEWLINE);
+        	ifElseCounter++;
+            System.out.println("JumpIfFalse BeginElse"+ifElseCounter);
+            stringBuilder.append("JIF BEGINELSE"+ifElseCounter+NEWLINE);
         }
         else {
             System.out.println("JumpIfFalse ExitIf");
-            
             stringBuilder.append("JIF EXITIF"+NEWLINE);
         }
     }
     @Override public void enterElseStmt(StarkParser.ElseStmtContext ctx) {
 
-        System.out.println("BeginElse");
-        stringBuilder.append("BEGINELSE"+NEWLINE);
+        System.out.println("BeginElse"+ifElseCounter);
+        stringBuilder.append("BEGINELSE"+ifElseCounter+NEWLINE);
     }
     @Override public void exitElseStmt(StarkParser.ElseStmtContext ctx)
     {
-        System.out.println("EndElse");
-        stringBuilder.append("ENDELSE"+NEWLINE);
+        System.out.println("EndElse"+ifElseCounter);
+        stringBuilder.append("ENDELSE"+ifElseCounter+NEWLINE);
+        ifElseCounter--; 
     }
     @Override public void enterOpenBracket(StarkParser.OpenBracketContext ctx) { }
     @Override public void exitOpenBracket(StarkParser.OpenBracketContext ctx) {
     }
     @Override public void enterCloseBracket(StarkParser.CloseBracketContext ctx) {
 
-            System.out.println("JumpToLabel ExitElse");
-            stringBuilder.append("JMP ENDELSE"+NEWLINE);
+            System.out.println("JumpToLabel EndElse"+ifElseCounter);
+            stringBuilder.append("JMP ENDELSE"+ifElseCounter+NEWLINE);
     }
     @Override public void exitCloseBracket(StarkParser.CloseBracketContext ctx) { }
     @Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }

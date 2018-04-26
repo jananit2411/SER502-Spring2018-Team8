@@ -1,7 +1,6 @@
 package runtime;
 
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -188,7 +187,22 @@ public class Runtime {
 						String label= line.split(" ")[1];
 						line = getNextInstruction(bufferReader,label);
 					}
-
+				}
+				else if(line.startsWith("EXITIF")){
+	                        //System.out.println("In exit if");
+	                        line=getNextInstruction(bufferReader,"");
+	                        //System.out.println(line);
+					}
+					else if (line.startsWith("ENDELSE")){
+					    line =getNextInstruction(bufferReader,"");
+	                }
+	                else if (line.startsWith("BEGINELSE")){
+	                    line =getNextInstruction(bufferReader,"");
+	                }
+	                else if (line.startsWith("JMP")){
+	                    String label = line.split(" ")[1];
+	                    //System.out.println(label);
+	                    line = getNextInstruction(bufferReader, label);
 				} else if (line.startsWith("ENTERWHILE")) {
 					bufferReader.mark(0);
 					line = getNextInstruction(bufferReader,"");
