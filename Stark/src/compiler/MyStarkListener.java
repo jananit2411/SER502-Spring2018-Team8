@@ -99,7 +99,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitWhileStatement(StarkParser.WhileStatementContext ctx){
-    	stringBuilder.append("JUMP BEGINWHILE"+NEWLINE);
+    	stringBuilder.append("JMP BEGINWHILE"+NEWLINE);
         System.out.println("Jump BeginWhile"+whileCounter);
         
         stringBuilder.append("EXITWHILE"+NEWLINE);

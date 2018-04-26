@@ -32,18 +32,18 @@ public class Runtime {
 		try {
 			FileReader reader = new FileReader(intermediateFilePath);
 			BufferedReader bufferReader = new BufferedReader(reader);
-			line = getNextInstruction(bufferReader,"");
+			line = getNextInstruction(bufferReader, "");
 			while (line != null) {
 				if (line.startsWith("DECINT")) {
 					String var = line.split(" ")[1];
 					intMap.put(var, 0);
-					line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 					// intList.add(var);
 				} else if (line.startsWith("DECBOOL")) {
 					String var = line.split(" ")[1];
 					boolMap.put(line.split(" ")[1], false);
 					// boolList.add(var);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("STORE")) {
 					String var = line.split(" ")[1];
 					if (intMap.containsKey(var)) {
@@ -51,7 +51,7 @@ public class Runtime {
 					} else if (boolMap.containsKey(var)) {
 						boolMap.put(var, boolStack.pop());
 					}
-					line =getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("PUSH")) {
 					String str = line.split(" ")[1];
 					if (checkInt(str)) {
@@ -59,16 +59,18 @@ public class Runtime {
 					} else {
 						boolStack.push(Boolean.parseBoolean(str));
 					}
-					line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("DISPLAY")) {
 					String str = line.split(" ")[1];
-					if (intMap.containsKey(str)) {
+					if (intMap.containsKey(str) || checkInt(str) == true) {
 						System.out.println(intStack.pop());
 
 					} else if (boolMap.containsKey(str)) {
 						System.out.println(boolStack.pop());
+					} else {
+						System.out.println(intStack.pop());
 					}
-					line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("LOAD")) {
 					String str = line.split(" ")[1];
 					if (intMap.containsKey(str)) {
@@ -76,16 +78,16 @@ public class Runtime {
 					} else if (boolMap.containsKey(str)) {
 						boolStack.push(boolMap.get(str));
 					}
-					line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("ADD")) {
 					intStack.push(intStack.pop() + intStack.pop());
-                    line = getNextInstruction(bufferReader,"");
-                } else if (line.startsWith("SUB")) {
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("SUB")) {
 					intStack.push(intStack.pop() - intStack.pop());
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("MUL")) {
 					intStack.push(intStack.pop() * intStack.pop());
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("DIV")) {
 					int x = intStack.pop();
 					int y = intStack.pop();
@@ -93,7 +95,7 @@ public class Runtime {
 						intStack.push(y / x);
 					else
 						System.out.println("ERROR:Cannot Divide by zero");
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.equalsIgnoreCase("EQ")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -102,7 +104,7 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("NEQ")) {
 					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
@@ -111,65 +113,65 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.equalsIgnoreCase("LT")) {
-					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
+					int firstValue = intStack.pop();
 					boolean result = false;
 					if (firstValue < secondValue) {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("LTE")) {
-					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
+					int firstValue = intStack.pop();
 					boolean result = false;
 					if (firstValue <= secondValue) {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.equalsIgnoreCase("GT")) {
 					int secondValue = intStack.pop();
-                    int firstValue = intStack.pop();
+					int firstValue = intStack.pop();
 					boolean result = false;
 					if (firstValue > secondValue) {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("GTE")) {
-					int firstValue = intStack.pop();
 					int secondValue = intStack.pop();
+					int firstValue = intStack.pop();
 					boolean result = false;
 					if (firstValue >= secondValue) {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("AND")) {
-				    if(boolStack.pop()&&boolStack.pop()) {
-				        boolStack.push(true);
-                    } else {
-				        boolStack.push(false);
-                    }
-                    line = getNextInstruction(bufferReader,"");
-                } else if (line.startsWith("OR")) {
-                    if(boolStack.pop() || boolStack.pop()) {
-                        boolStack.push(true);
-                    } else {
-                        boolStack.push(false);
-                    }
-                    line = getNextInstruction(bufferReader,"");
-                } else if (line.startsWith("NOT")) {
-                    if(!boolStack.pop()) {
-                        boolStack.push(true);
-                    } else {
-                        boolStack.push(false);
-                    }
-                    line = getNextInstruction(bufferReader,"");
-                } else if (line.startsWith("EQB")){
+					if (boolStack.pop() && boolStack.pop()) {
+						boolStack.push(true);
+					} else {
+						boolStack.push(false);
+					}
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("OR")) {
+					if (boolStack.pop() || boolStack.pop()) {
+						boolStack.push(true);
+					} else {
+						boolStack.push(false);
+					}
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("NOT")) {
+					if (!boolStack.pop()) {
+						boolStack.push(true);
+					} else {
+						boolStack.push(false);
+					}
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("EQB")) {
 					boolean firstValue = boolStack.pop();
 					boolean secondValue = boolStack.pop();
 					boolean result = false;
@@ -177,42 +179,28 @@ public class Runtime {
 						result = true;
 					}
 					boolStack.push(result);
-                    line = getNextInstruction(bufferReader,"");
-				}else if (line.startsWith("JIF")){
-					//boolean check = boolStack.pop();
-					if(boolStack.pop()){
-					line=getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("JIF")) {
+					if (boolStack.pop()) {
+						line = getNextInstruction(bufferReader, "");
+					} else {
+						String label = line.split(" ")[1];
+						line = getNextInstruction(bufferReader, label);
 					}
-					else {
-						String label= line.split(" ")[1];
-						line = getNextInstruction(bufferReader,label);
-					}
-				}
-				else if(line.startsWith("EXITIF")){
-	                        //System.out.println("In exit if");
-	                        line=getNextInstruction(bufferReader,"");
-	                        //System.out.println(line);
-					}
-					else if (line.startsWith("ENDELSE")){
-					    line =getNextInstruction(bufferReader,"");
-	                }
-	                else if (line.startsWith("BEGINELSE")){
-	                    line =getNextInstruction(bufferReader,"");
-	                }
-	                else if (line.startsWith("JMP")){
-	                    String label = line.split(" ")[1];
-	                    //System.out.println(label);
-	                    line = getNextInstruction(bufferReader, label);
+				} else if (line.startsWith("EXITIF")) {
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("ENDELSE")) {
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("BEGINELSE")) {
+					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("ENTERWHILE")) {
 					bufferReader.mark(0);
-					line = getNextInstruction(bufferReader,"");
-				} else if(line.startsWith("JUMP")) {
-					line = getNextInstruction(bufferReader,line.split(" ")[1]);
-				} else if (line.startsWith("EXITWHILE")) {
-					line = getNextInstruction(bufferReader,"");
-				} else if ( line.startsWith("JUMP")) {
+					line = getNextInstruction(bufferReader, "");
+				} else if (line.startsWith("JMP")) {
 					bufferReader.reset();
-					getNextInstruction(bufferReader,"");
+					line = getNextInstruction(bufferReader, line.split(" ")[1]);
+				} else if (line.startsWith("EXITWHILE")) {
+					line = getNextInstruction(bufferReader, "");
 				}
 
 			}
@@ -230,7 +218,7 @@ public class Runtime {
 		}
 	}
 
-	String getNextInstruction(BufferedReader bufferReader,String label) {
+	String getNextInstruction(BufferedReader bufferReader, String label) {
 		String line = "";
 		try {
 			line = bufferReader.readLine();
