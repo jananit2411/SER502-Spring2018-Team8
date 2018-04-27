@@ -193,12 +193,17 @@ public class Runtime {
 					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("BEGINELSE")) {
 					line = getNextInstruction(bufferReader, "");
-				} else if (line.startsWith("ENTERWHILE")) {
+				} else if (line.startsWith("BEGINWHILE")) {
 					bufferReader.mark(0);
 					line = getNextInstruction(bufferReader, "");
 				} else if (line.startsWith("JMP")) {
-					bufferReader.reset();
-					line = getNextInstruction(bufferReader, line.split(" ")[1]);
+					//bufferReader.reset();
+					if(line.contains("WHILE")) {
+						bufferReader.close();
+						reader = new FileReader(intermediateFilePath);
+						bufferReader = new BufferedReader(reader);
+					}
+					line = getNextInstruction(bufferReader,line.split(" ")[1]);
 				} else if (line.startsWith("EXITWHILE")) {
 					line = getNextInstruction(bufferReader, "");
 				}

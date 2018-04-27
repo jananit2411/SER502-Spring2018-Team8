@@ -91,7 +91,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     public void enterWhileStatement(StarkParser.WhileStatementContext ctx){
     	whileCounter++;
-    	stringBuilder.append("BEGINWHILE"+NEWLINE);
+    	stringBuilder.append("BEGINWHILE"+whileCounter+NEWLINE);
         System.out.println("BeginWhile"+whileCounter);
     };
     /**
@@ -99,10 +99,10 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitWhileStatement(StarkParser.WhileStatementContext ctx){
-    	stringBuilder.append("JMP BEGINWHILE"+NEWLINE);
+    	stringBuilder.append("JMP BEGINWHILE"+whileCounter+NEWLINE);
         System.out.println("Jump BeginWhile"+whileCounter);
         
-        stringBuilder.append("EXITWHILE"+NEWLINE);
+        stringBuilder.append("EXITWHILE"+whileCounter+NEWLINE);
         System.out.println("ExitWhile"+whileCounter);
         whileCounter--;
     };
@@ -1000,7 +1000,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterWhileCondition(StarkParser.WhileConditionContext ctx) { }
     @Override public void exitWhileCondition(StarkParser.WhileConditionContext ctx) {
         System.out.println("JumpIfFalse ExitWhile");
-        stringBuilder.append("JIF EXITWHILE"+NEWLINE);
+        stringBuilder.append("JIF EXITWHILE"+whileCounter+NEWLINE);
     }
     //till here
 }
