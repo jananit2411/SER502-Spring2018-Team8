@@ -58,7 +58,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitStatementList(StarkParser.StatementListContext ctx){
-        //System.out.println("statement list exited");
+
     };
     /**
      * Enter a parse tree produced by {@link StarkParser#statement}.
@@ -775,8 +775,11 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
-        System.out.println("Begin Func "+ ctx.name.getText()+" "+ count);
-        stringBuilder.append("BEGIN FUNC "+ctx.name.getText()+NEWLINE);
+        System.out.println("HALT");
+        stringBuilder.append("HALT"+ NEWLINE);
+        System.out.println("Begin Func "+ ctx.name.getText());
+        stringBuilder.append("BEGIN FUNC "+ ctx.name.getText()+NEWLINE);
+
     }
     /**
      * {@inheritDoc}
@@ -785,7 +788,8 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
         System.out.println("End Func "+ ctx.name.getText());//+ lableinfunctioncall;
-        stringBuilder.append("END FUNC "+ctx.name.getText());
+        stringBuilder.append("END FUNC "+ctx.name.getText()+NEWLINE);
+
     }
     /**
      * {@inheritDoc}
@@ -805,18 +809,6 @@ public class MyStarkListener extends StarkBaseListener {
         System.out.println("End Func");
         stringBuilder.append("END FUNC"+NEWLINE);
     }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void enterNoFunc(StarkParser.NoFuncContext ctx) { }
-    /**
-     * {@inheritDoc}
-     *
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override public void exitNoFunc(StarkParser.NoFuncContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -903,7 +895,7 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitReturnInt(StarkParser.ReturnIntContext ctx) {
         System.out.println("return") ;
-        stringBuilder.append("RET"+NEWLINE);
+        stringBuilder.append("RET "+ctx.varname.getText()  +NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -947,23 +939,25 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) {
 
-        System.out.println("Call "+ctx.name.getText());
-        System.out.println("End Call");
+        System.out.println("Call "+ctx.name.getText() +count);
+        System.out.println("End Call " +ctx.name.getText());
         System.out.println("Store "+ctx.varname.getText());
         
-        stringBuilder.append("CALL "+ctx.name.getText()+NEWLINE);
-        stringBuilder.append("END CALL"+NEWLINE);
+        stringBuilder.append("CALL "+ctx.name.getText()+ " "+ +count+ NEWLINE);
+        stringBuilder.append("END CALL "+ctx.name.getText()+NEWLINE);
         stringBuilder.append("STORE "+ctx.varname.getText()+NEWLINE);
+        count = 0;
     }
     @Override public void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
 
     }
     @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
-        System.out.println("Call "+ctx.name.getText());
-        System.out.println("End Call");
+        System.out.println("Call "+ctx.name.getText() +" "+ count);
+        System.out.println("End Call " +ctx.name.getText());
 
-        stringBuilder.append("CALL "+ctx.name.getText()+NEWLINE);
-        stringBuilder.append("END CALL"+NEWLINE);
+        stringBuilder.append("CALL "+ctx.name.getText()+" "+count +NEWLINE);
+        stringBuilder.append("END CALL "+ctx.name.getText()+NEWLINE);
+        count = 0;
    }
     @Override public void enterCondition(StarkParser.ConditionContext ctx) { }
     @Override public void exitCondition(StarkParser.ConditionContext ctx) {

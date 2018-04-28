@@ -507,6 +507,16 @@ public interface StarkListener extends ParseTreeListener {
 	 */
 	void exitNumber(StarkParser.NumberContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StarkParser#functionDefnList}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionDefnList(StarkParser.FunctionDefnListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StarkParser#functionDefnList}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionDefnList(StarkParser.FunctionDefnListContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code funcWithStmts}
 	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
@@ -530,18 +540,6 @@ public interface StarkListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code noFunc}
-	 * labeled alternative in {@link StarkParser#functionDefn}.
-	 * @param ctx the parse tree
-	 */
-	void enterNoFunc(StarkParser.NoFuncContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code noFunc}
-	 * labeled alternative in {@link StarkParser#functionDefn}.
-	 * @param ctx the parse tree
-	 */
-	void exitNoFunc(StarkParser.NoFuncContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code funName}
 	 * labeled alternative in {@link StarkParser#functionName}.
@@ -578,6 +576,18 @@ public interface StarkListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSingleParam(StarkParser.SingleParamContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code noParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterNoParam(StarkParser.NoParamContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code noParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitNoParam(StarkParser.NoParamContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code returnInt}
 	 * labeled alternative in {@link StarkParser#returnStatement}.

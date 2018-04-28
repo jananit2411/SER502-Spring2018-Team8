@@ -303,6 +303,12 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNumber(StarkParser.NumberContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StarkParser#functionDefnList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionDefnList(StarkParser.FunctionDefnListContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code funcWithStmts}
 	 * labeled alternative in {@link StarkParser#functionDefn}.
 	 * @param ctx the parse tree
@@ -316,13 +322,6 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code noFunc}
-	 * labeled alternative in {@link StarkParser#functionDefn}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNoFunc(StarkParser.NoFuncContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code funName}
 	 * labeled alternative in {@link StarkParser#functionName}.
@@ -344,6 +343,13 @@ public interface StarkVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSingleParam(StarkParser.SingleParamContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code noParam}
+	 * labeled alternative in {@link StarkParser#parameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNoParam(StarkParser.NoParamContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code returnInt}
 	 * labeled alternative in {@link StarkParser#returnStatement}.

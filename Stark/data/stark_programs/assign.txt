@@ -1,6 +1,10 @@
-int d = 0;
-while(d<3)
-{
-d = d+1;
-display d;
+int a;
+add();
+func add(){
+display 2;
+sub();
 }
+func sub(){
+display 6;
+}
+
