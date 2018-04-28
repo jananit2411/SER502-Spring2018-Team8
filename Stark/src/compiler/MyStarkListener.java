@@ -16,9 +16,10 @@ public class MyStarkListener extends StarkBaseListener {
 	private StringBuilder stringBuilder=new StringBuilder();
     String lableinfunctioncall=null;
     String destPath;
-    int count=0;
+    int argCount=0;
     int ifElseCounter=0;
     int whileCounter=0;
+    int funcCounter=0;
     public MyStarkListener(String destPath){
     	this.destPath=destPath;
     }
@@ -318,7 +319,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void exitArgNumber(StarkParser.ArgNumberContext ctx) {
         System.out.println("Push "+ctx.getText());
         stringBuilder.append("PUSH "+ctx.getText()+NEWLINE);
-        count++;
+        argCount++;
     }
     /**
      * {@inheritDoc}
@@ -334,7 +335,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void exitArgIdentifier(StarkParser.ArgIdentifierContext ctx) {
         System.out.println("Load "+ctx.getText());
         stringBuilder.append("LOAD "+ctx.getText()+NEWLINE);
-        count++;
+        argCount++;
         //System.out.println(count);
     }
 
@@ -847,7 +848,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterDummyIdentifier(StarkParser.DummyIdentifierContext ctx) {
         System.out.println("Load "+ctx.name.getText());
         stringBuilder.append("LOAD "+ctx.name.getText()+NEWLINE);
-        count ++;
+        argCount++;
 
     }
     /**
@@ -864,7 +865,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterDummyNumber(StarkParser.DummyNumberContext ctx) {
         System.out.println("Push "+ctx.name.getText());
         stringBuilder.append("PUSH "+ctx.name.getText()+NEWLINE);
-        count++;
+        argCount++;
     }
     /**
      * {@inheritDoc}
@@ -938,26 +939,26 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) {
-
-        System.out.println("Call "+ctx.name.getText() +count);
-        System.out.println("End Call " +ctx.name.getText());
+    	funcCounter++;
+        System.out.println("Call "+ctx.name.getText()+" "+funcCounter+" "+ +argCount);
+        System.out.println("End Call " +ctx.name.getText()+" "+funcCounter);
         System.out.println("Store "+ctx.varname.getText());
         
-        stringBuilder.append("CALL "+ctx.name.getText()+ " "+ +count+ NEWLINE);
-        stringBuilder.append("END CALL "+ctx.name.getText()+NEWLINE);
+        stringBuilder.append("CALL "+ctx.name.getText()+" "+funcCounter+" "+argCount+NEWLINE);
+        stringBuilder.append("END CALL "+ctx.name.getText()+" "+funcCounter+NEWLINE);
         stringBuilder.append("STORE "+ctx.varname.getText()+NEWLINE);
-        count = 0;
+        argCount = 0;
     }
     @Override public void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
 
     }
     @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
-        System.out.println("Call "+ctx.name.getText() +" "+ count);
+        System.out.println("Call "+ctx.name.getText() +" "+funcCounter+" "+ argCount);
         System.out.println("End Call " +ctx.name.getText());
 
-        stringBuilder.append("CALL "+ctx.name.getText()+" "+count +NEWLINE);
-        stringBuilder.append("END CALL "+ctx.name.getText()+NEWLINE);
-        count = 0;
+        stringBuilder.append("CALL "+ctx.name.getText()+" "+funcCounter+" "+argCount+NEWLINE);
+        stringBuilder.append("END CALL "+ctx.name.getText()+" "+funcCounter+NEWLINE);
+        argCount = 0;
    }
     @Override public void enterCondition(StarkParser.ConditionContext ctx) { }
     @Override public void exitCondition(StarkParser.ConditionContext ctx) {

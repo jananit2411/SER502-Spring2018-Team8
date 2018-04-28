@@ -21,6 +21,7 @@ public class Runtime {
     FileReader reader = null;
     String line = null;
     int argcount=0;
+    int funcCount=0;
     // List<String> intList =new ArrayList<String>();
     // List<String> boolList =new ArrayList<String>();
 
@@ -213,7 +214,8 @@ public class Runtime {
                 } else if (line.startsWith("EXITWHILE")) {
                     line = getNextInstruction(bufferReader, "");
                 } else if (line.startsWith("CALL")) {
-                    argcount= Integer.parseInt(line.split(" ")[2]);
+                	funcCount=Integer.parseInt(line.split(" ")[2]);
+                    argcount= Integer.parseInt(line.split(" ")[3]);
                     line = getNextInstruction(bufferReader,"BEGIN FUNC "+line.split(" ")[1]);
                 }else if (line.startsWith("END FUNC")){
 
@@ -223,7 +225,7 @@ public class Runtime {
                     bufferReader.close();
                     reader = new FileReader(intermediateFilePath);
                     bufferReader = new BufferedReader(reader);
-                    line = getNextInstruction(bufferReader,"END CALL "+label);
+                    line = getNextInstruction(bufferReader,"END CALL "+label+" "+funcCount);
 
                 }else if (line.startsWith("END CALL")){
                     line = getNextInstruction(bufferReader,"");
@@ -273,6 +275,8 @@ public class Runtime {
         Map<String, Integer> intMap = new HashMap<String, Integer>();
         Map<String, Boolean> boolMap = new HashMap<String, Boolean>();
         line = getNextInstruction(bufferReader,"");
+        int funcCount=0;
+        int argcount=0;
 
         while (line != null) {
             if (line.startsWith("END FUNC")) {
@@ -473,9 +477,24 @@ public class Runtime {
                     this.boolStack.push(boolStack.pop());
                 }
                 line = getNextInstruction(bufferReader, "");
+            }else if (line.startsWith("CALL")) {
+            	funcCount=Integer.parseInt(line.split(" ")[2]);
+                argcount= Integer.parseInt(line.split(" ")[3]);
+                line = getNextInstruction(bufferReader,"BEGIN FUNC "+line.split(" ")[1]);
+            }else if (line.startsWith("END FUNC")){
+
+            }else if (line.startsWith("BEGIN FUNC")){
+                String label = line.split(" ")[2];
+                functionCall(argcount);
+                bufferReader.close();
+                reader = new FileReader(intermediateFilePath);
+                bufferReader = new BufferedReader(reader);
+                line = getNextInstruction(bufferReader,"END CALL "+label+" "+funcCount);
+            }else if (line.startsWith("END CALL")){
+                line = getNextInstruction(bufferReader,"");
+            }else if (line.startsWith("HALT")){
+                System.exit(1);
             }
-
-
         }
 
     }

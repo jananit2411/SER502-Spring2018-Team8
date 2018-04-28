@@ -1,10 +1,14 @@
 int a;
-add();
-func add(){
-display 2;
+add(5,1);
+
+func add(int a,int b){
+
 sub();
+
+display 5;
 }
 func sub(){
+
+
 display 6;
 }
-

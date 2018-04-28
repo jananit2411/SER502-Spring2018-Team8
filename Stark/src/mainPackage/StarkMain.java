@@ -14,7 +14,7 @@ public class StarkMain {
 	public static void main(String args[]){
 
 		String srcPath ="data\\stark_programs\\assign.txt";
-		String destPath ="data\\intermediate_code\\assignIC.txt";
+		String destPath ="data\\intermediate_code\\assignIC.txt"; 
 		org.antlr.v4.runtime.ANTLRInputStream input = null;
 		try {
 			input = new org.antlr.v4.runtime.ANTLRFileStream(srcPath);
