@@ -1,5 +1,6 @@
 package compiler;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import compiler.antlrGenerated.StarkBaseListener;
 import compiler.antlrGenerated.StarkParser;
 
@@ -579,7 +580,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
         System.out.println("LOAD "+ctx.IDENTIFIER().getText());
         System.out.println("EQB");
-        stringBuilder.append("LOAD "+ctx.IDENTIFIER().getText());
+        stringBuilder.append("LOAD "+ctx.IDENTIFIER().getText()+NEWLINE);
         stringBuilder.append("EQB"+NEWLINE);
     }
     /**
@@ -895,7 +896,7 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitReturnInt(StarkParser.ReturnIntContext ctx) {
-        System.out.println("return") ;
+        System.out.println("RET "+ctx.varname.getText()) ;
         stringBuilder.append("RET "+ctx.varname.getText()  +NEWLINE);
     }
     /**
@@ -904,15 +905,17 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterReturnBool(StarkParser.ReturnBoolContext ctx) {
-        System.out.println("return");
-        stringBuilder.append("RET"+NEWLINE);
+
     }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitReturnBool(StarkParser.ReturnBoolContext ctx) { }
+    @Override public void exitReturnBool(StarkParser.ReturnBoolContext ctx) {
+        System.out.println("RET "+ctx.varname.getText());
+        stringBuilder.append("RET "+ctx.varname.getText()+NEWLINE);
+    }
     /**
      * {@inheritDoc}
      *
@@ -953,6 +956,7 @@ public class MyStarkListener extends StarkBaseListener {
 
     }
     @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
+        funcCounter++;
         System.out.println("Call "+ctx.name.getText() +" "+funcCounter+" "+ argCount);
         System.out.println("End Call " +ctx.name.getText());
 

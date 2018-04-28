@@ -82,7 +82,7 @@ public class Runtime {
                     line = getNextInstruction(bufferReader, "");
                 } else if (line.startsWith("DISPLAY")) {
                     String str = line.split(" ")[1];
-                    if (intMap.containsKey(str) || checkInt(str) == true) {
+                    if (intMap.containsKey(str) || checkInt(str)) {
                         System.out.println(intStack.pop());
 
                     } else if (boolMap.containsKey(str)) {
@@ -98,7 +98,7 @@ public class Runtime {
                     } else if (boolMap.containsKey(str)) {
                         boolStack.push(boolMap.get(str));
                     }
-                    line = getNextInstruction(bufferReader, "");
+                    line = getNextInstruction(bufferReader,"");
                 } else if (line.startsWith("ADD")) {
                     intStack.push(intStack.pop() + intStack.pop());
                     line = getNextInstruction(bufferReader, "");
@@ -234,7 +234,7 @@ public class Runtime {
 
                 }else if (line.startsWith("BEGIN FUNC")){
                     String label = line.split(" ")[2];
-                    functionCall(argcount);
+                    functionCall(argcount,intStack,boolStack);
                     bufferReader.close();
                     reader = new FileReader(intermediateFilePath);
                     bufferReader = new BufferedReader(reader);
@@ -281,7 +281,7 @@ public class Runtime {
         return "";
     }
 
-    public void functionCall(int argumentcount) throws IOException {
+    public void functionCall(int argumentcount,Stack globalIntstack,Stack globalBoolStack) throws IOException {
 
         Stack<Integer> intStack = new Stack<Integer>();
         Stack<Boolean> boolStack = new Stack<Boolean>();
@@ -301,8 +301,7 @@ public class Runtime {
 
                 if (argumentcount > 0) {
                     String var = line.split(" ")[1];
-                    intMap.put(var,this.intStack.pop());
-
+                    intMap.put(var, (Integer) globalIntstack.pop());
                     argumentcount--;
                 } else {
                     String var = line.split(" ")[1];
@@ -312,14 +311,12 @@ public class Runtime {
             } else if (line.startsWith("DECBOOL")) {
                 if (argumentcount > 0) {
                     String var = line.split(" ")[1];
-
-
-                    boolMap.put(var,this.boolStack.pop());
+                    boolMap.put(var, (Boolean) globalBoolStack.pop());
                     argumentcount--;
+                }else {
+                    String var = line.split(" ")[1];
+                    boolMap.put(line.split(" ")[1], false);
                 }
-                String var = line.split(" ")[1];
-                boolMap.put(line.split(" ")[1], false);
-                // boolList.add(var);
                 line = getNextInstruction(bufferReader, "");
             } else if (line.startsWith("STORE")) {
                 String var = line.split(" ")[1];
@@ -484,11 +481,20 @@ public class Runtime {
             } else if (line.startsWith("EXITWHILE")) {
                 line = getNextInstruction(bufferReader, "");
             } else if (line.startsWith("RET")) {
-                if (intMap.containsKey(line.split(" ")[1])) {
-                    this.intStack.push(intStack.pop());
+                String subStr = line.split(" ")[1];
+                if(subStr.contains(">")||subStr.contains("<")||subStr.contains("!")||subStr.contains("&")||subStr.contains("|")) {
+                    globalBoolStack.push(boolStack.pop());
                 } else {
-                    this.boolStack.push(boolStack.pop());
-                }
+                    if(subStr.contains("+")||subStr.contains("-")||subStr.contains("*")||subStr.contains("/")||subStr.contains("%")) {
+                        globalIntstack.push(intStack.pop());
+                    }
+                    else if (intMap.containsKey(subStr)) {
+                        globalIntstack.push(intStack.pop());
+                    } else if (boolMap.containsKey(subStr))
+                        globalBoolStack.push(boolStack.pop());
+                    }
+
+
                 line = getNextInstruction(bufferReader, "");
             }else if (line.startsWith("CALL")) {
             	funcCount=Integer.parseInt(line.split(" ")[2]);
@@ -498,16 +504,16 @@ public class Runtime {
 
             }else if (line.startsWith("BEGIN FUNC")){
                 String label = line.split(" ")[2];
-                functionCall(argcount);
+                functionCall(argcount,intStack,boolStack);
                 bufferReader.close();
                 reader = new FileReader(intermediateFilePath);
                 bufferReader = new BufferedReader(reader);
                 line = getNextInstruction(bufferReader,"END CALL "+label+" "+funcCount);
             }else if (line.startsWith("END CALL")){
                 line = getNextInstruction(bufferReader,"");
-            }else if (line.startsWith("HALT")){
-                System.exit(1);
-            }
+            }//else if (line.startsWith("HALT")){
+              //  System.exit(1);
+            //}
         }
 
     }
