@@ -114,7 +114,7 @@ public class Runtime {
                     if (x > 0)
                         intStack.push(y / x);
                     else
-                        System.out.println("ERROR:Cannot Divide by zero");
+                        System.err.println("ERROR:Cannot Divide by zero");
                     line = getNextInstruction(bufferReader, "");
                 } else if (line.equalsIgnoreCase("EQ")) {
                     int firstValue = intStack.pop();
@@ -371,7 +371,7 @@ public class Runtime {
                 if (x > 0)
                     intStack.push(y / x);
                 else
-                    System.out.println("ERROR:Cannot Divide by zero");
+                    System.out.println("Cannot Divide by zero");
                 line = getNextInstruction(bufferReader, "");
             } else if (line.equalsIgnoreCase("EQ")) {
                 int firstValue = intStack.pop();

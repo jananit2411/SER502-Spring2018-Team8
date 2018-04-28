@@ -39,6 +39,8 @@ public class Compiler{
 		} catch (IOException e) {
 			System.out.println("Error: Could not find or load source file");
 			return;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		StarkLexer lexer = new StarkLexer(input);
