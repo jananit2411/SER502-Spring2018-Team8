@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import compiler.Compiler;
+
 public class Runtime {
 
     String intermediateFilePath;
@@ -25,11 +27,22 @@ public class Runtime {
     // List<String> intList =new ArrayList<String>();
     // List<String> boolList =new ArrayList<String>();
 
+    static Runtime runtime; 
+    
     public static void main(String args[]) {
-        Runtime runtime = new Runtime("data\\intermediate_code\\assignIC.txt");
-        runtime.evaluateProgram();
+        Runtime.getInstance("data\\intermediate_code\\assignIC.txt").evaluateProgram();
     }
-
+    
+    public static Runtime getInstance(String src) {
+		if (runtime == null) {
+			runtime = new Runtime(src);
+			 
+		}
+		return runtime;
+	}
+	private Runtime() {
+		
+	}
     public Runtime(String path) {
         intermediateFilePath = path;
     }
