@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.io.IOException;
-
+ 
 public class Compiler{
 	
 
@@ -48,8 +48,8 @@ public class Compiler{
 
 	public static void main(String args[]){
 		
-		String	srcPath ="data\\stark_programs\\assign.txt";
-		String  destPath ="data\\intermediate_code\\assignIC.txt";
+		String	srcPath ="data\\stark_programs\\assign.ark";
+		String  destPath ="data\\intermediate_code\\assignIC.ark";
 		Compiler.getInstance(srcPath,destPath).compile();
 			}
 }

@@ -14,7 +14,7 @@ public class StarkMain {
 		System.out
 				.println("Usage: -c | --compile along with args for sourcepath and destpath");
 		System.out
-				.println("    or -e | --execute along with arg for intermediate code path");
+				.println(" or -e | --execute along with arg for intermediate code path");
 		return;
 	}
 }

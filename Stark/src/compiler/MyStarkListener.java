@@ -1,6 +1,5 @@
 package compiler;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import compiler.antlrGenerated.StarkBaseListener;
 import compiler.antlrGenerated.StarkParser;
 
