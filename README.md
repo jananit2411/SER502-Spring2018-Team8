@@ -19,6 +19,12 @@ Deliverables:
 
 Name of our language is STARK, which means simple yet powerful
 
+System requirements : Windows
+
+Tools Used : ANTLR4, Java
+
+Compilation & Execution
+
 Download the stark.jar from the repository
 
 For compiling STARK source code:
