@@ -1,3 +1,7 @@
+STARK PROGRAMMING LANGUAGE
+
+STARK is a static, strongly typed imperative programming language. The word “Stark” means simple and powerful which are the main design goals. It is easy to learn and provides all the major features of a high level language.
+
 Team Members:
 
 1. Debarati Bhattacharyya (ASU ID : 1213439446)
@@ -14,28 +18,22 @@ Deliverables:
 2. Executable is available in Stark/executable folder
 3. Sample programs are available in Stark/data/stark_programs folder
 4. Intermediate Code for those programs are available under Stark/data/intermediate_code folder
-5. Presentation is kept under main folder
+5. Presentation is under main folder
 6. The YouTube video link for demo is here
 
-Name of our language is STARK, which means simple yet powerful
 
-System requirements : Windows
+Tools Used :
+ANTLR 4
+  Lexical analysis – tokenization
+  Parser generation – parse tree
+Java 8
+  Compiler is written in Java 
+  Interpréter and Runtime environment use JRE
+  Data Structures used : Stack and Hashmap
 
-Tools Used : ANTLR4, Java
-
-Compilation & Execution
-
-Download the stark.jar from the repository
-
-For compiling STARK source code:
-
-java stark.jar -c sourcePath intermediateCodePath
-
-For executing intermediate code:
-
-java  stark.jar -e intermediateCodePath
-
-
-
-
-
+INSTALLATION FOR WINDOWS
+1. Download the stark.jar from the repository
+2. For compiling STARK source code:
+        java stark.jar -c sourcePath intermediateCodePath
+3. For executing intermediate code:
+        java  stark.jar -e intermediateCodePath
