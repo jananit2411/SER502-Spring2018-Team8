@@ -103,7 +103,9 @@ public class Runtime {
                     intStack.push(intStack.pop() + intStack.pop());
                     line = getNextInstruction(bufferReader, "");
                 } else if (line.startsWith("SUB")) {
-                    intStack.push(intStack.pop() - intStack.pop());
+                    int secondValue = intStack.pop();
+                    int firstValue = intStack.pop();
+                    intStack.push(firstValue - secondValue);
                     line = getNextInstruction(bufferReader, "");
                 } else if (line.startsWith("MUL")) {
                     intStack.push(intStack.pop() * intStack.pop());
@@ -357,7 +359,9 @@ public class Runtime {
                 intStack.push(intStack.pop() + intStack.pop());
                 line = getNextInstruction(bufferReader, "");
             } else if (line.startsWith("SUB")) {
-                intStack.push(intStack.pop() - intStack.pop());
+                int secondValue = intStack.pop();
+                int firstValue = intStack.pop();
+                intStack.push(firstValue - secondValue);
                 line = getNextInstruction(bufferReader, "");
             } else if (line.startsWith("MUL")) {
                 intStack.push(intStack.pop() * intStack.pop());

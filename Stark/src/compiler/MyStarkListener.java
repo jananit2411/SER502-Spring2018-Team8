@@ -1,6 +1,5 @@
 package compiler;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import compiler.antlrGenerated.StarkBaseListener;
 import compiler.antlrGenerated.StarkParser;
 
@@ -22,8 +21,11 @@ public class MyStarkListener extends StarkBaseListener {
     int ifElseCounter=0;
     int whileCounter=0;
     int funcCounter=0;
+    boolean functionScope = false;
     ArrayList<String> intVarList = new ArrayList<String>();
     ArrayList<String> boolVarList = new ArrayList<String>();
+    ArrayList<String> funcIntVarList = new ArrayList<String>();
+    ArrayList<String> funcBoolVarList = new ArrayList<String>();
 
     public MyStarkListener(String destPath){
     	this.destPath=destPath;
@@ -56,7 +58,6 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void enterStatementList(StarkParser.StatementListContext ctx){
-       // System.out.println("statement list entered")
     };
     /**
      * Exit a parse tree produced by {@link StarkParser#statementList}.
@@ -86,15 +87,25 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void exitAssignmentStmt(StarkParser.AssignmentStmtContext ctx){
-      //  System.out.println("exit assignment statement");
         String text = ctx.varName.getText();
-        if(intVarList.contains(text) || boolVarList.contains(text)) {
-            stringBuilder.append("STORE " + ctx.varName.getText() + NEWLINE);
-            System.out.println("STORE " + ctx.varName.getText());
+        if(functionScope) {
+            if(funcIntVarList.contains(text) || funcBoolVarList.contains(text)) {
+                stringBuilder.append("STORE " + ctx.varName.getText() + NEWLINE);
+                System.out.println("STORE " + ctx.varName.getText());
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
         } else {
-            System.err.println("Compile time error : Variable " +text+ " not defined");
-            System.exit(1);
+            if(intVarList.contains(text) || boolVarList.contains(text)) {
+                stringBuilder.append("STORE " + ctx.varName.getText() + NEWLINE);
+                System.out.println("STORE " + ctx.varName.getText());
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
         }
+
     };
     /**
      * Enter a parse tree produced by {@link StarkParser#whileStatement}.
@@ -343,8 +354,6 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitArgIdentifier(StarkParser.ArgIdentifierContext ctx) {
-
-            System.out.println("Load " + ctx.getText());
             stringBuilder.append("LOAD " + ctx.getText() + NEWLINE);
             argCount++;
 
@@ -358,6 +367,16 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterInitIntExpression(StarkParser.InitIntExpressionContext ctx) {
         String text = ctx.varName.getText();
+        if(functionScope) {
+            if(!(funcBoolVarList.contains(text) || intVarList.contains(text))) {
+                System.out.println("DecInt " + text);
+                stringBuilder.append("DECINT " + ctx.varName.getText() + NEWLINE);
+                funcIntVarList.add(ctx.varName.getText());
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
+        }else{
         if(!(boolVarList.contains(text) || intVarList.contains(text))) {
             System.out.println("DecInt " + text);
             stringBuilder.append("DECINT " + ctx.varName.getText() + NEWLINE);
@@ -366,6 +385,7 @@ public class MyStarkListener extends StarkBaseListener {
             System.err.println("Compile time error : Variable " +text+ " already defined");
             System.exit(1);
         }
+        }
     }
     /**
      * {@inheritDoc}
@@ -373,8 +393,7 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitInitIntExpression(StarkParser.InitIntExpressionContext ctx) {
-          System.out.println("Store "+ctx.varName.getText());
-          stringBuilder.append("STORE "+ctx.varName.getText()+NEWLINE);
+        stringBuilder.append("STORE " + ctx.varName.getText() + NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -383,32 +402,65 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterInitBoolExpression(StarkParser.InitBoolExpressionContext ctx) {
         String text = ctx.varName.getText();
-        if(!(boolVarList.contains(text) || intVarList.contains(text))) {
-            System.out.println("DecBool " + text);
-            stringBuilder.append("DECBOOL " + ctx.varName.getText() + NEWLINE);
-            boolVarList.add(text);
+        if(functionScope) {
+            if(!(funcBoolVarList.contains(text) || funcIntVarList.contains(text))) {
+                stringBuilder.append("DECBOOL " + ctx.varName.getText() + NEWLINE);
+                funcBoolVarList.add(text);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
         } else {
-            System.err.println("Compile time error : Variable " +text+ " already defined");
-            System.exit(1);
+            if(!(boolVarList.contains(text) || intVarList.contains(text))) {
+                stringBuilder.append("DECBOOL " + ctx.varName.getText() + NEWLINE);
+                boolVarList.add(text);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
         }
+
     }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitInitBoolExpression(StarkParser.InitBoolExpressionContext ctx) { 
-    	System.out.println("Store "+ctx.varName.getText());
-        stringBuilder.append("STORE "+ctx.varName.getText()+NEWLINE);
+    @Override public void exitInitBoolExpression(StarkParser.InitBoolExpressionContext ctx) {
+        String text = ctx.varName.getText();
+        stringBuilder.append("STORE " + ctx.varName.getText() + NEWLINE);
     }
+
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterIntDeclaration(StarkParser.IntDeclarationContext ctx) {
-        System.out.println("DecInt "+ctx.getText().substring(3));
-        stringBuilder.append("DECINT "+ctx.getText().substring(3)+NEWLINE);
+        String text = ctx.getText().substring(3);
+        if(functionScope)
+        {
+            if(!(funcIntVarList.contains(text) || funcBoolVarList.contains(text))) {
+                System.out.println("DecInt "+text);
+                stringBuilder.append("DECINT "+ctx.getText().substring(3)+NEWLINE);
+                funcIntVarList.add(text);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
+        } else
+        {
+            if(!(intVarList.contains(text) || boolVarList.contains(text))) {
+
+                System.out.println("DecInt " + text);
+                stringBuilder.append("DECINT " + ctx.getText().substring(3) + NEWLINE);
+                intVarList.add(text);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
+        }
+
     }
     /**
      * {@inheritDoc}
@@ -423,13 +475,24 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void enterBoolDeclaration(StarkParser.BoolDeclarationContext ctx) {
         String text = ctx.getText().substring(4);
-        if(!(boolVarList.contains(text)) || (intVarList.contains(text))) {
-            stringBuilder.append("DECBOOL " + text + NEWLINE);
-            boolVarList.add(ctx.getText());
-        } else{
-            System.err.println("Compile time error : Variable " +text+ " already defined");
-            System.exit(1);
+        if(functionScope) {
+            if(!(funcBoolVarList.contains(text)) || (funcIntVarList.contains(text))) {
+                stringBuilder.append("DECBOOL " + text + NEWLINE);
+                funcBoolVarList.add(text);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
+        } else {
+            if(!(boolVarList.contains(text)) || (intVarList.contains(text))) {
+                stringBuilder.append("DECBOOL " + text + NEWLINE);
+                boolVarList.add(text);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " already defined");
+                System.exit(1);
+            }
         }
+
     }
     /**
      * {@inheritDoc}
@@ -610,15 +673,24 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitEqualsBooValue(StarkParser.EqualsBooValueContext ctx) {
         String text = ctx.IDENTIFIER().getText();
-        if(boolVarList.contains(text)) {
-            System.out.println("LOAD " + text);
-            System.out.println("EQB");
-            stringBuilder.append("LOAD " + text+NEWLINE);
-            stringBuilder.append("EQB" + NEWLINE);
+        if(functionScope) {
+            if(funcBoolVarList.contains(text)) {
+                stringBuilder.append("LOAD " + text+NEWLINE);
+                stringBuilder.append("EQB" + NEWLINE);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
         } else {
-            System.err.println("Compile time error : Variable " +text+ " not defined");
-            System.exit(1);
+            if(boolVarList.contains(text)) {
+                stringBuilder.append("LOAD " + text+NEWLINE);
+                stringBuilder.append("EQB" + NEWLINE);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
         }
+
     }
     /**
      * {@inheritDoc}
@@ -633,15 +705,24 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitNotEqualsValue(StarkParser.NotEqualsValueContext ctx) {
         String text = ctx.IDENTIFIER().getText();
-        if(boolVarList.contains(text)) {
-            System.out.println("LOAD " + text);
-            System.out.println("NEQB");
-            stringBuilder.append("LOAD " + text);
-            stringBuilder.append("NEQB" + NEWLINE);
+        if(functionScope) {
+            if(funcBoolVarList.contains(text)) {
+                stringBuilder.append("LOAD " + text);
+                stringBuilder.append("NEQB" + NEWLINE);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
         } else {
-            System.err.println("Compile time error : Variable " +text+ " not defined");
-            System.exit(1);
+            if(boolVarList.contains(text)) {
+                stringBuilder.append("LOAD " + text);
+                stringBuilder.append("NEQB" + NEWLINE);
+            } else {
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
         }
+
     }
     /**
      * {@inheritDoc}
@@ -797,8 +878,22 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitIdentifier(StarkParser.IdentifierContext ctx) {
-        System.out.println("LOAD "+ ctx.getText());
-        stringBuilder.append("LOAD "+ctx.getText()+NEWLINE);
+        String text = ctx.getText();
+        if(functionScope) {
+            if((funcBoolVarList.contains(text) || funcIntVarList.contains(text))) {
+                stringBuilder.append("LOAD "+text+NEWLINE);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
+        } else {
+            if((boolVarList.contains(text) || intVarList.contains(text))) {
+                stringBuilder.append("LOAD "+text+NEWLINE);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
+        }
 
     }
     /**
@@ -822,11 +917,9 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
-        System.out.println("HALT");
+        functionScope = true;
         stringBuilder.append("HALT"+ NEWLINE);
-        System.out.println("Begin Func "+ ctx.name.getText());
         stringBuilder.append("BEGIN FUNC "+ ctx.name.getText()+NEWLINE);
-
     }
     /**
      * {@inheritDoc}
@@ -836,7 +929,9 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void exitFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) {
         System.out.println("End Func "+ ctx.name.getText());//+ lableinfunctioncall;
         stringBuilder.append("END FUNC "+ctx.name.getText()+NEWLINE);
-
+        functionScope = false;
+        funcBoolVarList.clear();
+        funcIntVarList.clear();
     }
     /**
      * {@inheritDoc}
@@ -844,6 +939,7 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
+        functionScope=true;
         System.out.println("Begin Func "+ctx.name.getText());
         stringBuilder.append("BEGIN FUNC "+ctx.name.getText()+NEWLINE);
     }
@@ -855,6 +951,9 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
         System.out.println("End Func");
         stringBuilder.append("END FUNC"+NEWLINE);
+        functionScope = false;
+        funcBoolVarList.clear();
+        funcIntVarList.clear();
     }
     /**
      * {@inheritDoc}
@@ -892,9 +991,7 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterDummyIdentifier(StarkParser.DummyIdentifierContext ctx) {
-        System.out.println("Load "+ctx.name.getText());
-        stringBuilder.append("LOAD "+ctx.name.getText()+NEWLINE);
-        argCount++;
+
 
     }
     /**
@@ -902,16 +999,17 @@ public class MyStarkListener extends StarkBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitDummyIdentifier(StarkParser.DummyIdentifierContext ctx) { }
+    @Override public void exitDummyIdentifier(StarkParser.DummyIdentifierContext ctx) {
+        stringBuilder.append("LOAD "+ctx.name.getText()+NEWLINE);
+        argCount++;
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterDummyNumber(StarkParser.DummyNumberContext ctx) {
-        System.out.println("Push "+ctx.name.getText());
-        stringBuilder.append("PUSH "+ctx.name.getText()+NEWLINE);
-        argCount++;
+
     }
     /**
      * {@inheritDoc}
@@ -919,7 +1017,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitDummyNumber(StarkParser.DummyNumberContext ctx) {
-
+        stringBuilder.append("PUSH "+ctx.name.getText()+NEWLINE);
+        argCount++;
     }
 
     @Override public void enterSingleParam(StarkParser.SingleParamContext ctx) { }
@@ -950,15 +1049,17 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterReturnBool(StarkParser.ReturnBoolContext ctx) {
-        System.out.println("return");
-        stringBuilder.append("RET"+NEWLINE);
+
     }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitReturnBool(StarkParser.ReturnBoolContext ctx) { }
+    @Override public void exitReturnBool(StarkParser.ReturnBoolContext ctx) {
+        System.out.println("return");
+        stringBuilder.append("RET "+ctx.varname.getText()+NEWLINE);
+    }
     /**
      * {@inheritDoc}
      *
@@ -986,14 +1087,28 @@ public class MyStarkListener extends StarkBaseListener {
      */
     @Override public void exitAssignFunctionCall(StarkParser.AssignFunctionCallContext ctx) {
     	funcCounter++;
-        System.out.println("Call "+ctx.name.getText()+" "+funcCounter+" "+ +argCount);
-        System.out.println("End Call " +ctx.name.getText()+" "+funcCounter);
-        System.out.println("Store "+ctx.varname.getText());
-        
-        stringBuilder.append("CALL "+ctx.name.getText()+" "+funcCounter+" "+argCount+NEWLINE);
+    	stringBuilder.append("CALL "+ctx.name.getText()+" "+funcCounter+" "+argCount+NEWLINE);
         stringBuilder.append("END CALL "+ctx.name.getText()+" "+funcCounter+NEWLINE);
-        stringBuilder.append("STORE "+ctx.varname.getText()+NEWLINE);
         argCount = 0;
+        String text = ctx.varname.getText();
+        if(functionScope) {
+            if((funcIntVarList.contains(text) || funcBoolVarList.contains(text))) {
+                stringBuilder.append("STORE " + ctx.varname.getText() + NEWLINE);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
+
+        } else {
+            if((intVarList.contains(text) || boolVarList.contains(text))) {
+                stringBuilder.append("STORE " + ctx.varname.getText() + NEWLINE);
+            } else{
+                System.err.println("Compile time error : Variable " +text+ " not defined");
+                System.exit(1);
+            }
+
+        }
+
     }
     @Override public void enterNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
 
