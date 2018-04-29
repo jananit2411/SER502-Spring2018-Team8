@@ -37,3 +37,92 @@ INSTALLATION FOR WINDOWS
         java stark.jar -c sourcePath intermediateCodePath
 3. For executing intermediate code:
         java  stark.jar -e intermediateCodePath
+
+GRAMMAR
+
+grammar stark;
+
+program :  statementList functionDefn;
+
+statementList : statement  statementList |
+                statement;
+
+statement : declarationStmt ';' |
+            initializationStmt ';'|
+            assignmentStmt ';'|
+            ifStatement |
+            whileStatement |
+            displayStatement ';' |
+            functionCall ';';
+
+initializationStmt: 'int' IDENTIFIER '=' expression|      
+                    'bool' IDENTIFIER '=' boolExpression| 
+                    'int' IDENTIFIER '=' functionCall|    
+                    'bool' IDENTIFIER '=' functionCall;
+
+declarationStmt : 'int' IDENTIFIER|                       
+                  'bool' IDENTIFIER;                      
+
+assignmentStmt : IDENTIFIER '=' boolExpression|           
+                 IDENTIFIER '=' expression ;              
+
+ifStatement : 'if' '(' boolExpression ')' '{' statementList '}' |                               
+              'if' '(' boolExpression ')' '{' statementList '}' 'else' '{' statementList '}' ;  
+
+whileStatement : 'while' '(' boolExpression ')' '{' statementList '}' ; 
+
+displayStatement : 'display' expression|
+                   'display' functionCall; 
+
+relationalExpression : expression '==' expression |
+                       expression '!=' expression|
+                       expression '<' expression |
+                       expression '<=' expression|
+                       expression '>' expression |
+                       expression '>=' expression|
+                       expression '==' BOOLVALUES|
+                       expression '!=' BOOLVALUES;
+
+logicalExpression : relationalExpression '&&' relationalExpression |
+                    relationalExpression '||' relationalExpression |
+                    relationalExpression '&&' logicalExpression |
+                    relationalExpression '||' logicalExpression |
+                    '!'relationalExpression |
+                    '!'logicalExpression;
+
+boolExpression : relationalExpression |
+                 logicalExpression |
+                 BOOLVALUES;
+
+expression : term '+' expression|
+             term '-' expression|
+             term;
+			 
+term : factor '*' term|
+       factor '/' term|
+       factor '%' term|
+       factor;
+	   
+factor : '(' expression ')' | IDENTIFIER | NUMBER ;
+
+functionDefn : 'func' functionName '(' parameters ')' '{' statementList  returnStatement '}'|
+               'func' functionName '(' parameters ')' '{' returnStatement '}'|  ;
+
+functionName : IDENTIFIER;
+
+parameters : declarationStmt ',' parameters |
+             declarationStmt |  ;
+
+returnStatement : 'return' expression ';'|
+                  'return' boolExpression';'|  ;
+
+functionCall : IDENTIFIER '=' functionName '(' arguments ')'|functionName '(' arguments ')' ;
+
+arguments : IDENTIFIER ',' arguments | NUMBER ',' arguments | NUMBER | IDENTIFIER |  ;
+
+BOOLVALUES : 'true' | 'false' ;
+IDENTIFIER : [a-zA-Z][a-zA-Z0-9]* ;
+NUMBER :[0-9]+;
+WS : [ \t\r\n]+ -> skip ;
+MULTICOMMENT : '/*'.*?'*/' -> skip;
+SINGLECOMMENT : '//' ~[\r\n]* -> skip;
