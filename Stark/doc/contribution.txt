@@ -12,7 +12,7 @@ Milestone 2(Teamwork)
 3) Checked integration of Antlr plugin in IntelliJ and tested the grammar rules.
 4) Started learning about intermediate code generation techniques.
 
-Milestone 3 - Draft Plan 
+Milestone 3 - 
 1) Parsing and Lexical analysis - Debarati, Vivek      
 2) Intermediate code generation - Janani , Debarati , Shilpa
 3) Runtime environment - Vivek , Shilpa , Janani
