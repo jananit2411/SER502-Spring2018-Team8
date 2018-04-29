@@ -1,3 +1,17 @@
-int a = 1;
-bool b = true;
-b=2;
+bool a;
+int b = 1;
+int c = 4;
+a=add(b,c);
+display a;
+
+func add(int a,int b){
+bool c;
+c=sub(a,b);
+return c;
+}
+
+func sub(int a,int b){
+display a;
+display b;
+return a+b>=5 && a-b<=0;
+}

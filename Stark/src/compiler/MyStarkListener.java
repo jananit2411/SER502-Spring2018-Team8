@@ -1,5 +1,6 @@
 package compiler;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import compiler.antlrGenerated.StarkBaseListener;
 import compiler.antlrGenerated.StarkParser;
 
@@ -406,15 +407,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void enterIntDeclaration(StarkParser.IntDeclarationContext ctx) {
-        String text = ctx.getText().substring(3);
-        if(!(boolVarList.contains(text) || intVarList.contains(text))) {
-            System.out.println("DecInt " + text);
-            stringBuilder.append("DECINT " + ctx.getText().substring(3) + NEWLINE);
-            intVarList.add(text);
-        } else {
-            System.err.println("Compile time error : Variable " +text+ " already defined");
-            System.exit(1);
-        }
+        System.out.println("DecInt "+ctx.getText().substring(3));
+        stringBuilder.append("DECINT "+ctx.getText().substring(3)+NEWLINE);
     }
     /**
      * {@inheritDoc}
@@ -619,7 +613,7 @@ public class MyStarkListener extends StarkBaseListener {
         if(boolVarList.contains(text)) {
             System.out.println("LOAD " + text);
             System.out.println("EQB");
-            stringBuilder.append("LOAD " + text);
+            stringBuilder.append("LOAD " + text+NEWLINE);
             stringBuilder.append("EQB" + NEWLINE);
         } else {
             System.err.println("Compile time error : Variable " +text+ " not defined");
@@ -803,14 +797,8 @@ public class MyStarkListener extends StarkBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitIdentifier(StarkParser.IdentifierContext ctx) {
-        String text = ctx.varName.getText();
-        if(intVarList.contains(text) || boolVarList.contains(text)) {
-            System.out.println("LOAD " + ctx.getText());
-            stringBuilder.append("LOAD " + ctx.getText() + NEWLINE);
-        } else {
-            System.err.println("Compile time error : Variable " +text+ " not defined");
-            System.exit(1);
-        }
+        System.out.println("LOAD "+ ctx.getText());
+        stringBuilder.append("LOAD "+ctx.getText()+NEWLINE);
 
     }
     /**
@@ -1011,6 +999,7 @@ public class MyStarkListener extends StarkBaseListener {
 
     }
     @Override public void exitNoAssignFunctionCall(StarkParser.NoAssignFunctionCallContext ctx) {
+        funcCounter++;
         System.out.println("Call "+ctx.name.getText() +" "+funcCounter+" "+ argCount);
         System.out.println("End Call " +ctx.name.getText());
 
