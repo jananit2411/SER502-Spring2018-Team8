@@ -2,17 +2,17 @@ STARK PROGRAMMING LANGUAGE
 
 STARK is a static, strongly typed imperative programming language. The word “Stark” means simple and powerful which are the main design goals. It is easy to learn and provides all the major features of a high level language.
 
-Team Members:
+TEAM MEMBERS:
 
-1. Debarati Bhattacharyya (ASU ID : 1213439446)
+1. Debarati Bhattacharyya
 
-2. Shilpa Bhat (ASU ID: 1212901948)
+2. Shilpa Bhat
 
-3. Janani Thiagarajan (ASU ID : 1213296368)
+3. Janani Thiagarajan
 
-4. Vivek Faldu (ASU ID : 1214392296)
+4. Vivek Faldu
 
-Deliverables:
+DELIVERABLES:
 
 1. Source Code is available in Stark/src folder
 2. Executable is available in Stark/executable folder
@@ -22,7 +22,7 @@ Deliverables:
 6. The YouTube video link for demo is here
 
 
-Tools Used :
+TOOLS USED: Antlr4, Java 8
 ANTLR 4
   Lexical analysis – tokenization
   Parser generation – parse tree
