@@ -34,9 +34,9 @@ Java 8
 INSTALLATION FOR WINDOWS
 1. Download the stark.jar from the repository
 2. For compiling STARK source code:
-        java stark.jar -c sourcePath intermediateCodePath
+        java -jar Stark.jar -c sourcePath intermediateCodePath
 3. For executing intermediate code:
-        java  stark.jar -e intermediateCodePath
+        java -jar Stark.jar -e intermediateCodePath
 
 GRAMMAR
 
