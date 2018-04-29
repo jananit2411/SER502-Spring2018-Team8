@@ -30,7 +30,7 @@ public class Runtime {
     static Runtime runtime; 
     
     public static void main(String args[]) {
-        Runtime.getInstance("data\\intermediate_code\\assignIC.txt").evaluateProgram();
+        Runtime.getInstance("data\\intermediate_code\\nested-ifIC.ark").evaluateProgram();
     }
     
     public static Runtime getInstance(String src) {
@@ -40,7 +40,7 @@ public class Runtime {
 		}
 		return runtime;
 	}
-	private Runtime() {
+	private Runtime() { 
 		
 	}
     public Runtime(String path) {

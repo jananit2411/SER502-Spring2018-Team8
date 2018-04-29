@@ -48,8 +48,8 @@ public class Compiler{
 
 	public static void main(String args[]){
 		
-		String	srcPath ="data\\stark_programs\\assign.ark";
-		String  destPath ="data\\intermediate_code\\assignIC.ark";
+		String	srcPath ="data\\stark_programs\\nested-if.ark";
+		String  destPath ="data\\intermediate_code\\nested-ifIC.ark";
 		Compiler.getInstance(srcPath,destPath).compile();
 			}
 }
