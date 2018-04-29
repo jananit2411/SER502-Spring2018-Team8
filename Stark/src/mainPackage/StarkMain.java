@@ -4,10 +4,10 @@ public class StarkMain {
 	public static void main(String[] args) {
 		if (args.length > 1) {
 			if (args[0].equals("-c") || args[0].equals("--compile")) {
-				compiler.Compiler.getInstance(args[1], args[2]);
+				compiler.Compiler.getInstance(args[1], args[2]).compile();
 				return;
 			} else if (args[0].equals("-e") || args[0].equals("--execute")) {
-				runtime.Runtime.getInstance(args[1]);
+				runtime.Runtime.getInstance(args[1]).evaluateProgram();
 				return;
 			}
 		}

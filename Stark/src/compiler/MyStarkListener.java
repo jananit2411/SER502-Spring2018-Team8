@@ -1,5 +1,6 @@
 package compiler;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import compiler.antlrGenerated.StarkBaseListener;
 import compiler.antlrGenerated.StarkParser;
 
@@ -35,8 +36,7 @@ public class MyStarkListener extends StarkBaseListener {
      * @param ctx the parse tree
      */
     public void enterProgram(StarkParser.ProgramContext ctx)
-    {
-    }
+    { }
 
     public void exitProgram(StarkParser.ProgramContext ctx){
     	String intermediateProgram = stringBuilder.toString();
@@ -117,7 +117,7 @@ public class MyStarkListener extends StarkBaseListener {
     @Override public void enterInitIntExpression(StarkParser.InitIntExpressionContext ctx) {
         String text = ctx.varName.getText();
         if(functionScope) {
-            if(!(funcBoolVarList.contains(text) || intVarList.contains(text))) {
+            if(!(funcBoolVarList.contains(text) || funcIntVarList.contains(text))) {
                 stringBuilder.append("DECINT " + ctx.varName.getText() + NEWLINE);
                 funcIntVarList.add(ctx.varName.getText());
             } else {
@@ -272,11 +272,15 @@ public class MyStarkListener extends StarkBaseListener {
         }
     }
 
+    @Override public void enterNotEqualsValue(StarkParser.NotEqualsValueContext ctx) {
+        stringBuilder.append("PUSH "+ctx.boolVal.getText()+NEWLINE);
+
+    }
     @Override public void exitNotEqualsValue(StarkParser.NotEqualsValueContext ctx) {
         String text = ctx.IDENTIFIER().getText();
         if(functionScope) {
             if(funcBoolVarList.contains(text)) {
-                stringBuilder.append("LOAD " + text);
+                stringBuilder.append("LOAD " + text+NEWLINE);
                 stringBuilder.append("NEQB" + NEWLINE);
             } else {
                 System.err.println("Compile time error : Variable " +text+ " not defined");
@@ -284,7 +288,7 @@ public class MyStarkListener extends StarkBaseListener {
             }
         } else {
             if(boolVarList.contains(text)) {
-                stringBuilder.append("LOAD " + text);
+                stringBuilder.append("LOAD " + text+NEWLINE);
                 stringBuilder.append("NEQB" + NEWLINE);
             } else {
                 System.err.println("Compile time error : Variable " +text+ " not defined");
@@ -352,6 +356,7 @@ public class MyStarkListener extends StarkBaseListener {
 
     @Override public void enterFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
         functionScope=true;
+        stringBuilder.append("HALT"+ NEWLINE);
         stringBuilder.append("BEGIN FUNC "+ctx.name.getText()+NEWLINE);
     }
     @Override public void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) {
