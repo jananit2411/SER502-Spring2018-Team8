@@ -1,0 +1,10 @@
+add(5,1);
+
+func add(int a,int b){
+sub(a,b);
+display a;
+}
+
+func sub(int c,int d){
+display c;
+}

@@ -1,40 +1,20 @@
 package mainPackage;
-import compiler.antlrGenerated.MyStarkListener;
-import compiler.antlrGenerated.StarkLexer;
-import compiler.antlrGenerated.StarkParser;
-
-import org.antlr.v4.gui.TreeViewer;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
-import java.io.IOException;
 
 public class StarkMain {
-
-	public static void main(String args[]){
-
-		String srcPath ="data\\stark_programs\\assign.txt";
-		String destPath ="data\\intermediate_code\\assignIC.txt";
-		org.antlr.v4.runtime.ANTLRInputStream input = null;
-		try {
-			input = new org.antlr.v4.runtime.ANTLRFileStream(srcPath);
-		} catch (IOException e) {
-			System.out.println("Error: Could not find or load source file");
-			return;
+	public static void main(String[] args) {
+		if (args.length > 1) {
+			if (args[0].equals("-c") || args[0].equals("--compile")) {
+				compiler.Compiler.getInstance(args[1], args[2]).compile();
+				return;
+			} else if (args[0].equals("-e") || args[0].equals("--execute")) {
+				runtime.Runtime.getInstance(args[1]).evaluateProgram();
+				return;
+			}
 		}
-
-		StarkLexer lexer = new StarkLexer(input);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
-		StarkParser parser = new StarkParser(tokens);
-		ParseTree tree = parser.program();
-		
-		//final TreeViewer view = new TreeViewer(null, tree);
-		//view.open();
-
-		ParseTreeWalker walker = new ParseTreeWalker();
-		walker.walk(new MyStarkListener(destPath),tree);
-		//String inter = new MyStarkListener().walk(tree);
-		//System.out.println("done");
+		System.out
+				.println("Usage: -c | --compile along with args for sourcepath and destpath");
+		System.out
+				.println("    or -e | --execute along with arg for intermediate code path");
+		return;
 	}
 }

@@ -531,6 +531,18 @@ public class StarkBaseListener implements StarkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunctionDefnList(StarkParser.FunctionDefnListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionDefnList(StarkParser.FunctionDefnListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFuncWithStmts(StarkParser.FuncWithStmtsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -550,18 +562,6 @@ public class StarkBaseListener implements StarkListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFuncWithoutStmts(StarkParser.FuncWithoutStmtsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNoFunc(StarkParser.NoFuncContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNoFunc(StarkParser.NoFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -598,6 +598,18 @@ public class StarkBaseListener implements StarkListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSingleParam(StarkParser.SingleParamContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNoParam(StarkParser.NoParamContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNoParam(StarkParser.NoParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

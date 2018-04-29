@@ -1,6 +1,6 @@
 grammar Stark;
 
-program :  statementList functionDefn ;
+program :  statementList functionDefnList ;
 statementList : statement  statementList |
                 statement;
 
@@ -41,8 +41,8 @@ relationalExpression : expression '==' expression #equalsExpression|
                        expression '<=' expression #lessEqualsExpression|
                        expression '>' expression  #greaterExpression|
                        expression '>=' expression #greaterEqualsExpression|
-                       expression '==' BOOLVALUES #equalsBooValue|
-                       expression '!=' BOOLVALUES #notEqualsValue;
+                       IDENTIFIER '==' boolVal=BOOLVALUES #equalsBooValue|
+                       IDENTIFIER '!=' boolVal=BOOLVALUES #notEqualsValue;
 
 logicalExpression : relationalExpression '&&' relationalExpression #relationalAnd|
                     relationalExpression '||' relationalExpression #relationalOr |
@@ -67,15 +67,17 @@ term : factor '*' term #mulExpresison|
 factor : '(' expression ')' #braceExpression| varName=IDENTIFIER #Identifier| num=NUMBER #number ;
 
 
+functionDefnList : functionDefn functionDefnList | ;
+
 functionDefn : 'func' name=functionName '(' parameters ')' '{' statementList  returnStatement '}' #funcWithStmts|
-               'func' name=functionName '(' parameters ')' '{' returnStatement '}' #funcWithoutStmts | #noFunc ;
+               'func' name=functionName '(' parameters ')' '{' returnStatement '}' #funcWithoutStmts  ;
 
 functionName : IDENTIFIER #funName;
 parameters : declarationStmt ',' parameters #multParam|
-             declarationStmt   #singleParam;
+             declarationStmt   #singleParam | #noParam;
 
-returnStatement : 'return' expression ';' #returnInt|
-                  'return' boolExpression';' #returnBool | #noReturn ;
+returnStatement : 'return' varname=expression ';' #returnInt|
+                  'return' varname=boolExpression';' #returnBool | #noReturn ;
 
 functionCall : varname=IDENTIFIER '=' name=functionName '(' arguments ')' #assignFunctionCall
                |name=functionName '(' arguments ')' #noAssignFunctionCall;

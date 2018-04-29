@@ -1,0 +1,11 @@
+bool a;
+int b = 1;
+int c = 4;
+a=compare(b,c);
+display a;
+
+func compare(int a,int b){
+display a;
+display b;
+return a+b>=5 && a-b<=0;
+}

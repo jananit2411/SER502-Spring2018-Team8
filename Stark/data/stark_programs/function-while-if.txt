@@ -1,0 +1,22 @@
+
+add(1);
+
+func add(int a)
+{
+   int c=0;
+   while(c<100)
+   {
+        if (40 < c && c  < 60)
+        {
+	    display c;
+        }
+        else 
+        {
+	     display 6;
+        }
+   c=a+c;
+   }
+}
+
+
+

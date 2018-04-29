@@ -1,0 +1,11 @@
+bool a=false;
+bool b= true;
+if (!a !=true && b==true){
+display 2;
+}
+else
+{
+display 3;
+}
+
+
